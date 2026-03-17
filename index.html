@@ -971,16 +971,15 @@ Swal.fire({
     icon:"success",
     title:"Pedido pronto!",
     text:"Abrindo WhatsApp...",
-    showConfirmButton:false,
-    timer:1500,
-    didClose:()=>{
+    confirmButtonColor:"#079689"
+}).then(()=>{
 
-        window.location.href =
-        `https://api.whatsapp.com/send?phone=5511975240578&text=${encodeURIComponent(msg)}`;
+    const url = `https://wa.me/5511975240578?text=${encodeURIComponent(msg)}`;
 
-        clearCart();
+    window.open(url, "_blank");
 
-    }
+    clearCart();
+
 });
 
 }
