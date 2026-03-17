@@ -925,62 +925,65 @@
     }
     
     function checkout(){
-    
-        if(Object.keys(cart).length === 0){
-    
-            Swal.fire({
-                icon:"info",
-                title:"Carrinho vazio",
-                text:"Escolha algo para seu pet!",
-                confirmButtonColor:"#079689"
-            });
-    
-            return;
-        }
-    
-        let msg = "🐾 *Novo Pedido - PF NutriPet*\n\n";
-    
-        let faltaTamanho = [];
-    
-        for(let item in cart){
-    
-            const card = document.querySelector(`[data-product="${item}"]`);
-    
-            if(card && card.querySelector(".tamanhos") && !tamanhosSelecionados[item]){
-    
-                faltaTamanho.push(item);
-    
-            }
-    
-            msg += `✅ *${cart[item]}x* ${item} ${tamanhosSelecionados[item] || ""}\n`;
-        }
-    
-        if(faltaTamanho.length > 0){
-    
-            Swal.fire({
-                icon:"warning",
-                title:"Escolha o tamanho",
-                html:`Escolha o tamanho para: <b>${faltaTamanho.join(", ")}</b>`,
-                confirmButtonColor:"#079689"
-            });
-    
-            return;
-        }
-    
-        msg += `\n💰 *Total: ${document.getElementById("cart-total").innerText}*`;
-    
-        Swal.fire({
-            icon:"success",
-            title:"Pedido pronto!",
-            text:"Abrindo WhatsApp...",
-            showConfirmButton:false,
-            timer:1500,
-            didClose:()=>{
-                window.open(`https://wa.me/5511975240578?text=${encodeURIComponent(msg)}`,"_blank");
-                clearCart(); // limpa o carrinho depois do envio
-            }
-        });
+
+if(Object.keys(cart).length === 0){
+
+    Swal.fire({
+        icon:"info",
+        title:"Carrinho vazio",
+        text:"Escolha algo para seu pet!",
+        confirmButtonColor:"#079689"
+    });
+
+    return;
+}
+
+let msg = "🐾 *Novo Pedido - PF NutriPet*\n\n";
+
+let faltaTamanho = [];
+
+for(let item in cart){
+
+    const card = document.querySelector(`[data-product="${item}"]`);
+
+    if(card && card.querySelector(".tamanhos") && !tamanhosSelecionados[item]){
+        faltaTamanho.push(item);
     }
+
+    msg += `✅ *${cart[item]}x* ${item} ${tamanhosSelecionados[item] || ""}\n`;
+}
+
+if(faltaTamanho.length > 0){
+
+    Swal.fire({
+        icon:"warning",
+        title:"Escolha o tamanho",
+        html:`Escolha o tamanho para: <b>${faltaTamanho.join(", ")}</b>`,
+        confirmButtonColor:"#079689"
+    });
+
+    return;
+}
+
+msg += `\n💰 *Total: ${document.getElementById("cart-total").innerText}*`;
+
+Swal.fire({
+    icon:"success",
+    title:"Pedido pronto!",
+    text:"Abrindo WhatsApp...",
+    showConfirmButton:false,
+    timer:1500,
+    didClose:()=>{
+
+        window.location.href =
+        `https://api.whatsapp.com/send?phone=5511975240578&text=${encodeURIComponent(msg)}`;
+
+        clearCart();
+
+    }
+});
+
+}
     
     /* carregar carrinho ao abrir site */
     
