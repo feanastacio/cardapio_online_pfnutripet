@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Online - PF NutriPet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --tiffany: #079689;
+            --tiffany-light: #e8f5f4;
+            --white: #ffffff;
+            --bg: #f0f4f4;
+            --text-dark: #1a2a29;
+            --text-light: #5f7a78;
+            --whatsapp: #25d366;
+            --insta: #E1306C;
+            --shadow: 0 8px 30px rgba(7, 150, 137, 0.1);
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--tiffany), #056d63);
+            color: var(--white);
+            text-align: center;
+            padding: 50px 20px;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { margin: 0; font-size: 2rem; font-weight: 800; letter-spacing: -1px; }
+        header p { margin: 10px 0 0; opacity: 0.9; font-weight: 400; font-size: 0.9rem; }
+
+        /* Filtros Modernos */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 20px 10px;
+            position: sticky;
+            top: 0;
+            background: rgba(240, 244, 244, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            overflow-x: auto;
+        }
+
+        .filter-btn {
+            background: var(--white);
+            border: none;
+            color: var(--tiffany);
+            padding: 10px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            text-transform: uppercase;
+        }
+
+        .filter-btn.active {
+            background: var(--tiffany);
+            color: var(--white);
+            box-shadow: 0 5px 15px rgba(7, 150, 137, 0.3);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 15px 140px;
+        }
+
+        /* Cards Estilizados */
+        .item-card {
+            background: var(--white);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(7, 150, 137, 0.05);
+            transition: transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .item-card.hidden { display: none; }
+
+        .item-info h3 { 
+            margin: 0; 
+            font-size: 1.15rem; 
+            color: var(--tiffany); 
+            font-weight: 700;
+        }
+
+        .item-info p { 
+            margin: 8px 0; 
+            font-size: 0.85rem; 
+            color: var(--text-light); 
+        }
+
+        .item-price { 
+            font-weight: 800; 
+            color: var(--text-dark); 
+            font-size: 1.2rem; 
+            margin-top: 5px;
+        }
+
+        /* Área de Seleção de Tamanhos */
+        .tamanhos {
+            background: var(--tiffany-light);
+            padding: 12px;
+            border-radius: 15px;
+        }
+
+        .tamanhos p { 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            font-weight: 800; 
+            margin: 0 0 10px 0; 
+            color: var(--tiffany);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-size {
+            background: var(--white);
+            border: 2px solid transparent;
+            color: var(--text-dark);
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-right: 5px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .btn-size.selected {
+            border-color: var(--tiffany);
+            background: var(--tiffany);
+            color: white;
+        }
+
+        /* Controles de Quantidade */
+        .controls { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            padding-top: 10px;
+            border-top: 1px dashed #ddd;
+        }
+
+        .qty-wrapper {
+            display: flex;
+            align-items: center;
+            background: #eee;
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .btn-qty {
+            background: var(--tiffany);
+            color: white;
+            border: none;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .qty-val { font-weight: 800; min-width: 30px; text-align: center; font-size: 1rem; }
+
+        /* Footer Flutuante */
+        footer {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 14px;
+            border-radius: 15px;
+            border: none;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .btn-whatsapp { background: var(--tiffany); color: white; }
+        .btn-insta { background: #fee2e2; color: var(--insta); }
+
+        /* Customização SweetAlert */
+        .swal2-confirm {
+            background-color: var(--tiffany) !important;
+            border-radius: 15px !important;
+        }
+
+    .logo {
+        width: 100px; /* Tamanho da logo */
+        height: 100px;
+        border-radius: 50%; /* Deixa a imagem redonda */
+        background-color: white; /* Fundo branco caso a imagem tenha transparência */
+        border: 3px solid var(--white);
+        margin-bottom: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        object-fit: cover;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centraliza tudo no header */
+        /* ... resto do seu estilo de header ... */
+    }
+
+    :root {
+        --tiffany: #079689;
+        --detalhe-marrom: #5D3A3A; /* Tom aproximado do logo */
+        /* ... suas outras variáveis ... */
+    }
+
+    .item-info p {
+        color: var(--detalhe-marrom); /* Muda a descrição dos itens para combinar com o logo */
+        opacity: 0.8;
+    }
+
+    #cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 350px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+            z-index: 1100;
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+        }
+        #cart-sidebar.open { right: 0; }
+        
+        .cart-header { background: var(--tiffany); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .cart-items { flex: 1; overflow-y: auto; padding: 15px; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+        .cart-item-info { flex: 1; }
+        .btn-remove { background: #ff4d4d; color: white; border: none; padding: 5px 8px; border-radius: 5px; font-size: 0.7rem; margin-left: 10px; }
+        
+        /* Footer do Carrinho */
+        .cart-footer { padding: 20px; border-top: 2px solid var(--bg); }
+        .total-box { display: flex; justify-content: space-between; font-weight: 800; margin-bottom: 15px; }
+
+        /* Botão Flutuante do Carrinho */
+        .cart-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--tiffany);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 999;
+            cursor: pointer;
+            border: none;
+        }
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #ff4d4d;
+            font-size: 0.7rem;
+            padding: 4px 7px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        footer { display: none; } /* Oculto para usar o botão flutuante e sidebar */
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 1050;
+        }
+        .overlay.active { display: block; }
+
+        /* RESPONSIVO MOBILE */
+        @media (max-width: 768px){
+
+            header{
+                padding:40px 15px;
+            }
+
+            header h1{
+                font-size:1.6rem;
+            }
+
+            header p{
+                font-size:0.8rem;
+            }
+
+            .logo{
+                width:80px;
+                height:80px;
+            }
+
+            .container{
+                padding:0 12px 120px;
+            }
+
+            .item-card{
+                padding:16px;
+                border-radius:16px;
+            }
+
+            .item-info h3{
+                font-size:1rem;
+            }
+
+            .item-info p{
+                font-size:0.8rem;
+            }
+
+            .item-price{
+                font-size:1.1rem;
+            }
+
+            .controls{
+                flex-direction:column;
+                align-items:flex-start;
+                gap:8px;
+            }
+
+            .qty-wrapper{
+                width:100%;
+                justify-content:space-between;
+            }
+
+            .btn-qty{
+                width:40px;
+                height:40px;
+                font-size:1.2rem;
+            }
+
+            .filters{
+                padding:15px 10px;
+                gap:6px;
+            }
+
+            .filter-btn{
+                font-size:0.7rem;
+                padding:8px 12px;
+            }
+
+            .cart-float{
+                width:55px;
+                height:55px;
+                bottom:15px;
+                right:15px;
+            }
+
+            #cart-sidebar{
+                width:90%;
+            }
+        }
+
+        /* TELAS MUITO PEQUENAS */
+        @media (max-width: 420px){
+
+            header h1{
+                font-size:1.4rem;
+            }
+
+            .item-info h3{
+                font-size:0.95rem;
+            }
+
+            .item-price{
+                font-size:1rem;
+            }
+
+            .btn-size{
+                margin-bottom:6px;
+            }
+
+            .tamanhos{
+                display:flex;
+                flex-direction:column;
+                gap:6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="overlay" class="overlay" onclick="toggleCart()"></div>
+
+<header>
+    <img src="logo.png" alt="PF NutriPet Logo" class="logo">
+    <h1>PF NutriPet 🐾</h1>
+    <p>Saúde e sabor em cada porção, alimentação natural para seu pet!</p>
+</header>
+
+<div class="filters">
+    <button class="filter-btn active" onclick="filterItems('todos')">Todos</button>
+    <button class="filter-btn" onclick="filterItems('comida')">Alimentação Natural</button>
+    <button class="filter-btn" onclick="filterItems('petiscos')">Petiscos</button>
+    <button class="filter-btn" onclick="filterItems('Kits')">Kits festa</button>
+</div>
+
+<div class="container">
+    <div class="item-card" data-cat="comida">
+        <div class="item-info">
+            <h3>Delícia de Carne</h3>
+            <p>100g • Músculo bovino, legumes selecionados e arroz integral.</p>
+            <div class="item-price">R$ 8,00</div>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Delícia de Carne', -1)">-</button>
+                <span class="qty-val" id="qty-Delícia de Carne">0</span>
+                <button class="btn-qty" onclick="update('Delícia de Carne', 1)">+</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="item-card" data-cat="comida">
+        <div class="item-info">
+            <h3>Caipira</h3>
+            <p>100g • Peito de frango sem pele, com legumes selecionados.</p>
+            <div class="item-price">R$ 8,00</div>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Caipira', -1)">-</button>
+                <span class="qty-val" id="qty-Caipira">0</span>
+                <button class="btn-qty" onclick="update('Caipira', 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="item-card" data-cat="comida">
+        <div class="item-info">
+            <h3>Mineirinha</h3>
+            <p>100g • Lombo suíno, com legumes selecionados.</p>
+            <div class="item-price">R$ 8,00</div>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Mineirinha', -1)">-</button>
+                <span class="qty-val" id="qty-Mineirinha">0</span>
+                <button class="btn-qty" onclick="update('Mineirinha', 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="item-card" data-cat="petiscos" data-product="Banana">
+        <div class="item-info">
+            <h3>Banana</h3>
+            <p>Porções de 200g. Crocante e saudável.</p>
+            <p>Os petiscos são compostos por 3 tamanhos:
+                <p>
+                    número 1: Indicado para adestradores.
+                    número 2: Indicado para porte pequeno.
+                    número 3: Indicado para porte médio e grande.
+                </p>
+            </p>
+            <div class="item-price">R$ 20,00</div>
+        </div>
+        <div class="tamanhos">
+            <p>Escolha o tamanho do corte:</p>
+            <button class="btn-size" onclick="selectSize('Banana', 'Tamanho 1', this)">Nº 1</button>
+            <button class="btn-size" onclick="selectSize('Banana', 'Tamanho 2', this)">Nº 2</button>
+            <button class="btn-size" onclick="selectSize('Banana', 'Tamanho 3', this)">Nº 3</button>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Banana', -1)">-</button>
+                <span class="qty-val" id="qty-Banana">0</span>
+                <button class="btn-qty" onclick="update('Banana', 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="item-card" data-cat="petiscos" data-product="Carne com beterraba">
+        <div class="item-info">
+            <h3>Carne com beterraba</h3>
+            <p>Porções de 200g. Crocante e saudável.</p>
+            <p>Os petiscos são compostos por 3 tamanhos:
+                <p>
+                    número 1: Indicado para adestradores.
+                    número 2: Indicado para porte pequeno.
+                    número 3: Indicado para porte médio e grande.
+                </p>
+            </p>
+            <div class="item-price">R$ 20,00</div>
+        </div>
+        <div class="tamanhos">
+            <p>Escolha o tamanho do corte:</p>
+            <button class="btn-size" onclick="selectSize('Carne com beterraba', 'Tamanho 1', this)">Nº 1</button>
+            <button class="btn-size" onclick="selectSize('Carne com beterraba', 'Tamanho 2', this)">Nº 2</button>
+            <button class="btn-size" onclick="selectSize('Carne com beterraba', 'Tamanho 3', this)">Nº 3</button>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Carne com beterraba', -1)">-</button>
+                <span class="qty-val" id="qty-Carne com beterraba">0</span>
+                <button class="btn-qty" onclick="update('Carne com beterraba', 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="item-card" data-cat="petiscos" data-product="Carne com cenoura">
+        <div class="item-info">
+            <h3>Carne com cenoura</h3>
+            <p>Porções de 200g. Crocante e saudável.</p>
+            <p>Os petiscos são compostos por 3 tamanhos:
+                <p>
+                    número 1: Indicado para adestradores.
+                    número 2: Indicado para porte pequeno.
+                    número 3: Indicado para porte médio e grande.
+                </p>
+            </p>
+            <div class="item-price">R$ 20,00</div>
+        </div>
+        <div class="tamanhos">
+            <p>Escolha o tamanho do corte:</p>
+            <button class="btn-size" onclick="selectSize('Carne com cenoura', 'Tamanho 1', this)">Nº 1</button>
+            <button class="btn-size" onclick="selectSize('Carne com cenoura', 'Tamanho 2', this)">Nº 2</button>
+            <button class="btn-size" onclick="selectSize('Carne com cenoura', 'Tamanho 3', this)">Nº 3</button>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Carne com cenoura', -1)">-</button>
+                <span class="qty-val" id="qty-Carne com cenoura">0</span>
+                <button class="btn-qty" onclick="update('Carne com cenoura', 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="item-card" data-cat="petiscos" data-product="Fígado">
+        <div class="item-info">
+            <h3>Fígado</h3>
+            <p>Porções de 200g. Crocante e saudável.</p>
+            <p>Os petiscos são compostos por 3 tamanhos:
+                <p>
+                    número 1: Indicado para adestradores.
+                    número 2: Indicado para porte pequeno.
+                    número 3: Indicado para porte médio e grande.
+                </p>
+            </p>
+            <div class="item-price">R$ 20,00</div>
+        </div>
+        <div class="tamanhos">
+            <p>Escolha o tamanho do corte:</p>
+            <button class="btn-size" onclick="selectSize('Fígado', 'Tamanho 1', this)">Nº 1</button>
+            <button class="btn-size" onclick="selectSize('Fígado', 'Tamanho 2', this)">Nº 2</button>
+            <button class="btn-size" onclick="selectSize('Fígado', 'Tamanho 3', this)">Nº 3</button>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Fígado', -1)">-</button>
+                <span class="qty-val" id="qty-Fígado">0</span>
+                <button class="btn-qty" onclick="update('Fígado', 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="item-card" data-cat="petiscos" data-product="Carne suína">
+        <div class="item-info">
+            <h3>Carne suína</h3>
+            <p>Porções de 200g. Crocante e saudável.</p>
+            <p>Os petiscos são compostos por 3 tamanhos:
+                <p>
+                    número 1: Indicado para adestradores.
+                    número 2: Indicado para porte pequeno.
+                    número 3: Indicado para porte médio e grande.
+                </p>
+            </p>
+            <div class="item-price">R$ 20,00</div>
+        </div>
+        <div class="tamanhos">
+            <p>Escolha o tamanho do corte:</p>
+            <button class="btn-size" onclick="selectSize('Carne suína', 'Tamanho 1', this)">Nº 1</button>
+            <button class="btn-size" onclick="selectSize('Carne suína', 'Tamanho 2', this)">Nº 2</button>
+            <button class="btn-size" onclick="selectSize('Carne suína', 'Tamanho 3', this)">Nº 3</button>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Carne suína', -1)">-</button>
+                <span class="qty-val" id="qty-Carne suína">0</span>
+                <button class="btn-qty" onclick="update('Carne suína', 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="item-card" data-cat="petiscos" data-product="Carne com abobora">
+        <div class="item-info">
+            <h3>Carne com abobora</h3>
+            <p>Porções de 200g. Crocante e saudável.</p>
+            <p>Os petiscos são compostos por 3 tamanhos:
+                <p>
+                    número 1: Indicado para adestradores.
+                    número 2: Indicado para porte pequeno.
+                    número 3: Indicado para porte médio e grande.
+                </p>
+            </p>
+            <div class="item-price">R$ 20,00</div>
+        </div>
+        <div class="tamanhos">
+            <p>Escolha o tamanho do corte:</p>
+            <button class="btn-size" onclick="selectSize('Carne com abobora', 'Tamanho 1', this)">Nº 1</button>
+            <button class="btn-size" onclick="selectSize('Carne com abobora', 'Tamanho 2', this)">Nº 2</button>
+            <button class="btn-size" onclick="selectSize('Carne com abobora', 'Tamanho 3', this)">Nº 3</button>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Carne com abobora', -1)">-</button>
+                <span class="qty-val" id="qty-Carne com abobora">0</span>
+                <button class="btn-qty" onclick="update('Carne com abobora', 1)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="item-card" data-cat="Kits">
+        <div class="item-info">
+            <h3>Kit Festa 01</h3>
+            <img src="kit1.png" alt="">
+            <div class="item-price">R$ 85,00</div>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Kit Festa 01', -1)">-</button>
+                <span class="qty-val" id="qty-Kit Festa 01">0</span>
+                <button class="btn-qty" onclick="update('Kit Festa 01', 1)">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="item-card" data-cat="Kits">
+        <div class="item-info">
+            <h3>Kit Festa 02</h3>
+            <img src="kit2.png" alt="">
+            <div class="item-price">R$ 105,00</div>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Kit Festa 02', -1)">-</button>
+                <span class="qty-val" id="qty-Kit Festa 02">0</span>
+                <button class="btn-qty" onclick="update('Kit Festa 02', 1)">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="item-card" data-cat="Kits">
+        <div class="item-info">
+            <h3>Kit Festa 03</h3>
+            <img src="kit3.png" alt="">
+            <div class="item-price">R$ 115,00</div>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Kit Festa 03', -1)">-</button>
+                <span class="qty-val" id="qty-Kit Festa 03">0</span>
+                <button class="btn-qty" onclick="update('Kit Festa 03', 1)">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="item-card" data-cat="Kits">
+        <div class="item-info">
+            <h3>Kit Festa 04</h3>
+            <img src="kit4.png" alt="">
+            <div class="item-price">R$ 195,00</div>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Kit Festa 04', -1)">-</button>
+                <span class="qty-val" id="qty-Kit Festa 04">0</span>
+                <button class="btn-qty" onclick="update('Kit Festa 04', 1)">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="item-card" data-cat="Kits">
+        <div class="item-info">
+            <h3>Kit Festa 05</h3>
+            <img src="kit5.png" alt="">
+            <div class="item-price">R$ 315,00</div>
+        </div>
+        <div class="controls">
+            <span>Quantidade</span>
+            <div class="qty-wrapper">
+                <button class="btn-qty" onclick="update('Kit Festa 05', -1)">-</button>
+                <span class="qty-val" id="qty-Kit Festa 05">0</span>
+                <button class="btn-qty" onclick="update('Kit Festa 05', 1)">+</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button class="cart-float" onclick="toggleCart()">
+    🛒
+    <span class="cart-count" id="cart-count">0</span>
+</button>
+
+<div id="cart-sidebar">
+    <div class="cart-header">
+        <strong>Seu Carrinho</strong>
+        <button onclick="toggleCart()" style="background:none; border:none; color:white; font-size:1.5rem;">×</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+        <p style="text-align:center; color:#999; margin-top:20px;">Seu carrinho está vazio</p>
+    </div>
+    <div class="cart-footer">
+        <div class="total-box">
+            <span>Total:</span>
+            <span id="cart-total">R$ 0,00</span>
+        </div>
+        <button class="filter-btn active" style="width:100%; padding:15px;" onclick="checkout()">Finalizar Pedido</button>
+    </div>
+</div>
+
+<footer>
+    <button class="btn-action btn-whatsapp" onclick="checkout()">🛒 Enviar Pedido</button>
+    <a href="https://www.instagram.com/pfnutripet/" target="_blank" class="btn-action btn-insta">Instagram</a>
+</footer>
+
+<script>
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || {};
+    let tamanhosSelecionados = {};
+
+    const prices = {
+        "Delícia de Carne": 8,
+        "Caipira": 8,
+        "Mineirinha": 8,
+        "Banana": 20,
+        "Carne com beterraba": 20,
+        "Carne com cenoura": 20,
+        "Frango com cenoura": 20,
+        "Frango com beterraba": 20,
+        "Fígado": 20,
+        "Carne suína": 20,
+        "Carne com abobora": 20,
+        "Kit Festa 05": 315,
+        "Kit Festa 04": 195,
+        "Kit Festa 03": 115,
+        "Kit Festa 02": 105,
+        "Kit Festa 01": 85
+    };
+    
+    function saveCart(){
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+    
+    function update(product, change) {
+    
+        if (!cart[product]) cart[product] = 0;
+    
+        cart[product] += change;
+    
+        if (cart[product] <= 0) delete cart[product];
+    
+        const qtyEl = document.getElementById(`qty-${product}`);
+    
+        if (qtyEl) qtyEl.innerText = cart[product] || 0;
+    
+        saveCart();
+        updateCartCount();
+        renderCart();
+    }
+    
+    function updateCartCount(){
+    
+        let total = 0;
+    
+        for(let item in cart){
+            total += cart[item];
+        }
+    
+        document.getElementById("cart-count").innerText = total;
+    }
+    
+    function toggleCart(){
+    
+        document.getElementById('cart-sidebar').classList.toggle('open');
+        document.getElementById('overlay').classList.toggle('active');
+        renderCart();
+    }
+    
+    function removeProduct(product){
+    
+        delete cart[product];
+    
+        const qtyEl = document.getElementById(`qty-${product}`);
+    
+        if(qtyEl) qtyEl.innerText = 0;
+    
+        saveCart();
+        updateCartCount();
+        renderCart();
+    }
+    
+    function renderCart(){
+    
+        const container = document.getElementById('cart-items');
+        const totalEl = document.getElementById('cart-total');
+    
+        container.innerHTML = "";
+    
+        let total = 0;
+    
+        if(Object.keys(cart).length === 0){
+    
+            container.innerHTML = '<p style="text-align:center;color:#999;margin-top:20px;">Seu carrinho está vazio</p>';
+    
+            totalEl.innerText = "R$ 0,00";
+    
+            return;
+        }
+    
+        for(let item in cart){
+    
+            let preco = prices[item] || 0;
+    
+            let subtotal = preco * cart[item];
+    
+            total += subtotal;
+    
+            let tamanho = tamanhosSelecionados[item] ? `(${tamanhosSelecionados[item]})` : "";
+    
+            container.innerHTML += `
+            <div class="cart-item">
+                <div class="cart-item-info">
+                    <strong>${cart[item]}x ${item}</strong><br>
+                    <small>${tamanho} - R$ ${subtotal.toFixed(2)}</small>
+                </div>
+                <button class="btn-remove" onclick="removeProduct('${item}')">Remover</button>
+            </div>
+            `;
+        }
+    
+        totalEl.innerText = `R$ ${total.toFixed(2)}`;
+    }
+    
+    function filterItems(cat){
+    
+        document.querySelectorAll(".filter-btn").forEach(btn=>btn.classList.remove("active"));
+    
+        event.target.classList.add("active");
+    
+        document.querySelectorAll(".item-card").forEach(card=>{
+    
+            if(cat==="todos" || card.dataset.cat === cat){
+    
+                card.classList.remove("hidden");
+    
+            }else{
+    
+                card.classList.add("hidden");
+    
+            }
+    
+        });
+    }
+    
+    function selectSize(produto, tamanho, elemento){
+    
+        tamanhosSelecionados[produto] = tamanho;
+    
+        const container = elemento.parentElement;
+    
+        container.querySelectorAll(".btn-size").forEach(btn=>btn.classList.remove("selected"));
+    
+        elemento.classList.add("selected");
+    }
+    
+    function checkout(){
+    
+        if(Object.keys(cart).length === 0){
+    
+            Swal.fire({
+                icon:"info",
+                title:"Carrinho vazio",
+                text:"Escolha algo para seu pet!",
+                confirmButtonColor:"#079689"
+            });
+    
+            return;
+        }
+    
+        let msg = "🐾 *Novo Pedido - PF NutriPet*\n\n";
+    
+        let faltaTamanho = [];
+    
+        for(let item in cart){
+    
+            const card = document.querySelector(`[data-product="${item}"]`);
+    
+            if(card && card.querySelector(".tamanhos") && !tamanhosSelecionados[item]){
+    
+                faltaTamanho.push(item);
+    
+            }
+    
+            msg += `✅ *${cart[item]}x* ${item} ${tamanhosSelecionados[item] || ""}\n`;
+        }
+    
+        if(faltaTamanho.length > 0){
+    
+            Swal.fire({
+                icon:"warning",
+                title:"Escolha o tamanho",
+                html:`Escolha o tamanho para: <b>${faltaTamanho.join(", ")}</b>`,
+                confirmButtonColor:"#079689"
+            });
+    
+            return;
+        }
+    
+        msg += `\n💰 *Total: ${document.getElementById("cart-total").innerText}*`;
+    
+        Swal.fire({
+            icon:"success",
+            title:"Pedido pronto!",
+            text:"Abrindo WhatsApp...",
+            showConfirmButton:false,
+            timer:1500,
+            didClose:()=>{
+                window.open(`https://wa.me/5511975240578?text=${encodeURIComponent(msg)}`,"_blank");
+                clearCart(); // limpa o carrinho depois do envio
+            }
+        });
+    }
+    
+    /* carregar carrinho ao abrir site */
+    
+    function loadCart(){
+    
+        for(let item in cart){
+    
+            const qtyEl = document.getElementById(`qty-${item}`);
+    
+            if(qtyEl){
+    
+                qtyEl.innerText = cart[item];
+            }
+        }
+    
+        updateCartCount();
+        renderCart();
+    }
+
+    function clearCart(){
+        cart = {};
+        tamanhosSelecionados = {};
+        localStorage.removeItem("cart");
+
+        document.querySelectorAll(".qty-val").forEach(q=>{
+            q.innerText = 0;
+        });
+
+        updateCartCount();
+        renderCart();
+    }
+    window.onload = loadCart;
+    </script>
+
+</body>
+</html>
