@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <!-- Define que o idioma principal da página é português do Brasil -->
 <html lang="pt-br">
+
 <head>
     <!-- Cabeçalho técnico da página: aqui ficam título, fontes, estilos e bibliotecas externas -->
     <!-- Importa a biblioteca SweetAlert2, usada para mostrar alertas bonitos na tela -->
@@ -30,7 +31,7 @@
             --insta: #E1306C;
             --shadow: 0 8px 30px rgba(7, 150, 137, 0.1);
         }
-        
+
         /* Estilo geral da página inteira */
         body {
             font-family: 'Montserrat', sans-serif;
@@ -47,11 +48,22 @@
             text-align: center;
             padding: 50px 20px;
             border-radius: 0 0 30px 30px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        header h1 { margin: 0; font-size: 2rem; font-weight: 800; letter-spacing: -1px; }
-        header p { margin: 10px 0 0; opacity: 0.9; font-weight: 400; font-size: 0.9rem; }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            margin: 10px 0 0;
+            opacity: 0.9;
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
 
         /* Filtros Modernos */
         /* Área dos botões de filtro: Todos, Alimentação Natural, Petiscos e Kits */
@@ -80,7 +92,7 @@
             font-size: 0.8rem;
             white-space: nowrap;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             text-transform: uppercase;
         }
 
@@ -114,28 +126,30 @@
         }
 
         /* Classe usada pelo JavaScript para esconder produtos quando um filtro é escolhido */
-        .item-card.hidden { display: none; }
+        .item-card.hidden {
+            display: none;
+        }
 
         /* Nome do produto dentro do card */
-        .item-info h3 { 
-            margin: 0; 
-            font-size: 1.15rem; 
-            color: var(--tiffany); 
+        .item-info h3 {
+            margin: 0;
+            font-size: 1.15rem;
+            color: var(--tiffany);
             font-weight: 700;
         }
 
         /* Descrição do produto dentro do card */
-        .item-info p { 
-            margin: 8px 0; 
-            font-size: 0.85rem; 
-            color: var(--text-light); 
+        .item-info p {
+            margin: 8px 0;
+            font-size: 0.85rem;
+            color: var(--text-light);
         }
 
         /* Preço do produto */
-        .item-price { 
-            font-weight: 800; 
-            color: var(--text-dark); 
-            font-size: 1.2rem; 
+        .item-price {
+            font-weight: 800;
+            color: var(--text-dark);
+            font-size: 1.2rem;
             margin-top: 5px;
         }
 
@@ -147,12 +161,27 @@
             border-radius: 15px;
         }
 
-        .tamanhos p { 
-            font-size: 0.7rem; 
-            text-transform: uppercase; 
-            font-weight: 800; 
-            margin: 0 0 10px 0; 
+        .sabores {
+            background: var(--tiffany-light);
+            padding: 12px;
+            border-radius: 15px;
+        }
+
+        .sabores p {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin: 0 0 10px 0;
             color: var(--tiffany);
+            letter-spacing: 0.5px;
+        }
+
+        .tamanhos p {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            color: var(--tiffany) !important;
             letter-spacing: 0.5px;
         }
 
@@ -179,9 +208,9 @@
 
         /* Controles de Quantidade */
         /* Área de controle de quantidade, com botões + e - */
-        .controls { 
-            display: flex; 
-            align-items: center; 
+        .controls {
+            display: flex;
+            align-items: center;
             justify-content: space-between;
             padding-top: 10px;
             border-top: 1px dashed #ddd;
@@ -208,8 +237,13 @@
             font-weight: bold;
             font-size: 1.1rem;
         }
-        
-        .qty-val { font-weight: 800; min-width: 30px; text-align: center; font-size: 1rem; }
+
+        .qty-val {
+            font-weight: 800;
+            min-width: 30px;
+            text-align: center;
+            font-size: 1rem;
+        }
 
         /* Footer Flutuante */
         /* Rodapé antigo com botões fixos. Mais abaixo ele é ocultado porque o carrinho flutuante está sendo usado. */
@@ -224,7 +258,7 @@
             backdrop-filter: blur(10px);
             padding: 15px;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             display: flex;
             gap: 10px;
             z-index: 1000;
@@ -247,15 +281,22 @@
             text-transform: uppercase;
         }
 
-        .btn-whatsapp { background: var(--tiffany); color: white; }
-        .btn-insta { background: #fee2e2; color: var(--insta); }
+        .btn-whatsapp {
+            background: var(--tiffany);
+            color: white;
+        }
+
+        .btn-insta {
+            background: #fee2e2;
+            color: var(--insta);
+        }
 
         /* Personalização mais bonita dos alerts SweetAlert2 */
         .swal2-popup {
             border-radius: 28px !important;
             padding: 28px 24px !important;
             font-family: 'Montserrat', sans-serif !important;
-            box-shadow: 0 18px 50px rgba(0,0,0,0.25) !important;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25) !important;
             border: 1px solid rgba(7, 150, 137, 0.15) !important;
         }
 
@@ -285,38 +326,44 @@
         }
 
 
-/* Estilo da imagem da logo */
-    .logo {
-        width: 100px; /* Tamanho da logo */
-        height: 100px;
-        border-radius: 50%; /* Deixa a imagem redonda */
-        background-color: white; /* Fundo branco caso a imagem tenha transparência */
-        border: 3px solid var(--white);
-        margin-bottom: 15px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        object-fit: cover;
-    }
+        /* Estilo da imagem da logo */
+        .logo {
+            width: 100px;
+            /* Tamanho da logo */
+            height: 100px;
+            border-radius: 50%;
+            /* Deixa a imagem redonda */
+            background-color: white;
+            /* Fundo branco caso a imagem tenha transparência */
+            border: 3px solid var(--white);
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
 
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Centraliza tudo no header */
-        /* ... resto do seu estilo de header ... */
-    }
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Centraliza tudo no header */
+            /* ... resto do seu estilo de header ... */
+        }
 
-    :root {
-        --tiffany: #079689;
-        --detalhe-marrom: #5D3A3A; /* Tom aproximado do logo */
-        /* ... suas outras variáveis ... */
-    }
+        :root {
+            --tiffany: #079689;
+            --detalhe-marrom: #5D3A3A;
+            /* Tom aproximado do logo */
+            /* ... suas outras variáveis ... */
+        }
 
-    .item-info p {
-        color: var(--detalhe-marrom); /* Muda a descrição dos itens para combinar com o logo */
-        opacity: 0.8;
-    }
+        .item-info p {
+            color: var(--detalhe-marrom);
+            /* Muda a descrição dos itens para combinar com o logo */
+            opacity: 0.8;
+        }
 
-    /* Menu lateral do carrinho, que fica escondido à direita até o usuário abrir */
-    #cart-sidebar {
+        /* Menu lateral do carrinho, que fica escondido à direita até o usuário abrir */
+        #cart-sidebar {
             position: fixed;
             top: 0;
             right: -100%;
@@ -324,25 +371,60 @@
             max-width: 350px;
             height: 100%;
             background: var(--white);
-            box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
             z-index: 1100;
             transition: 0.4s;
             display: flex;
             flex-direction: column;
         }
+
         /* Quando a classe "open" é adicionada pelo JavaScript, o carrinho aparece na tela */
-        #cart-sidebar.open { right: 0; }
-        
+        #cart-sidebar.open {
+            right: 0;
+        }
+
         /* Cabeçalho do carrinho lateral */
-        .cart-header { background: var(--tiffany); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .cart-header {
+            background: var(--tiffany);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         /* Área onde os itens adicionados ao carrinho são listados */
-        .cart-items { flex: 1; overflow-y: auto; padding: 15px; }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
         /* Linha de cada produto dentro do carrinho */
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 0.9rem; }
-        .cart-item-info { flex: 1; }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
         /* Botão vermelho para remover um produto do carrinho */
-        .btn-remove { background: #ff4d4d; color: white; border: none; padding: 5px 8px; border-radius: 5px; font-size: 0.7rem; margin-left: 10px; }
-        
+        .btn-remove {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            margin-left: 10px;
+        }
+
 
         /* Botões de tamanho dentro do carrinho */
         .cart-size-options {
@@ -445,8 +527,17 @@
         }
 
         /* Footer do Carrinho */
-        .cart-footer { padding: 20px; border-top: 2px solid var(--bg); }
-        .total-box { display: flex; justify-content: space-between; font-weight: 800; margin-bottom: 15px; }
+        .cart-footer {
+            padding: 20px;
+            border-top: 2px solid var(--bg);
+        }
+
+        .total-box {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
 
         /* Botão Flutuante do Carrinho */
         /* Botão flutuante do carrinho que fica no canto inferior direito */
@@ -462,11 +553,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             z-index: 999;
             cursor: pointer;
             border: none;
         }
+
         /* Bolinha vermelha que mostra a quantidade total de itens no carrinho */
         .cart-count {
             position: absolute;
@@ -479,8 +571,12 @@
             border: 2px solid white;
         }
 
-        footer { display: none; } /* Oculto para usar o botão flutuante e sidebar */
-        
+        footer {
+            display: none;
+        }
+
+        /* Oculto para usar o botão flutuante e sidebar */
+
         /* Fundo escuro que aparece atrás do carrinho aberto */
         .overlay {
             position: fixed;
@@ -488,115 +584,118 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             display: none;
             z-index: 1050;
         }
-        .overlay.active { display: block; }
+
+        .overlay.active {
+            display: block;
+        }
 
         /* RESPONSIVO MOBILE */
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
 
-            header{
-                padding:40px 15px;
+            header {
+                padding: 40px 15px;
             }
 
-            header h1{
-                font-size:1.6rem;
+            header h1 {
+                font-size: 1.6rem;
             }
 
-            header p{
-                font-size:0.8rem;
+            header p {
+                font-size: 0.8rem;
             }
 
-            .logo{
-                width:80px;
-                height:80px;
+            .logo {
+                width: 80px;
+                height: 80px;
             }
 
-            .container{
-                padding:0 12px 120px;
+            .container {
+                padding: 0 12px 120px;
             }
 
-            .item-card{
-                padding:16px;
-                border-radius:16px;
+            .item-card {
+                padding: 16px;
+                border-radius: 16px;
             }
 
-            .item-info h3{
-                font-size:1rem;
+            .item-info h3 {
+                font-size: 1rem;
             }
 
-            .item-info p{
-                font-size:0.8rem;
+            .item-info p {
+                font-size: 0.8rem;
             }
 
-            .item-price{
-                font-size:1.1rem;
+            .item-price {
+                font-size: 1.1rem;
             }
 
-            .controls{
-                flex-direction:column;
-                align-items:flex-start;
-                gap:8px;
+            .controls {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
             }
 
-            .qty-wrapper{
-                width:100%;
-                justify-content:space-between;
+            .qty-wrapper {
+                width: 100%;
+                justify-content: space-between;
             }
 
-            .btn-qty{
-                width:40px;
-                height:40px;
-                font-size:1.2rem;
+            .btn-qty {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
 
-            .filters{
-                padding:15px 10px;
-                gap:6px;
+            .filters {
+                padding: 15px 10px;
+                gap: 6px;
             }
 
-            .filter-btn{
-                font-size:0.7rem;
-                padding:8px 12px;
+            .filter-btn {
+                font-size: 0.7rem;
+                padding: 8px 12px;
             }
 
-            .cart-float{
-                width:55px;
-                height:55px;
-                bottom:15px;
-                right:15px;
+            .cart-float {
+                width: 55px;
+                height: 55px;
+                bottom: 15px;
+                right: 15px;
             }
 
-            #cart-sidebar{
-                width:90%;
+            #cart-sidebar {
+                width: 90%;
             }
         }
 
         /* TELAS MUITO PEQUENAS */
-        @media (max-width: 420px){
+        @media (max-width: 420px) {
 
-            header h1{
-                font-size:1.4rem;
+            header h1 {
+                font-size: 1.4rem;
             }
 
-            .item-info h3{
-                font-size:0.95rem;
+            .item-info h3 {
+                font-size: 0.95rem;
             }
 
-            .item-price{
-                font-size:1rem;
+            .item-price {
+                font-size: 1rem;
             }
 
-            .btn-size{
-                margin-bottom:6px;
+            .btn-size {
+                margin-bottom: 6px;
             }
 
-            .tamanhos{
-                display:flex;
-                flex-direction:column;
-                gap:6px;
+            .tamanhos {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
             }
         }
     </style>
@@ -607,597 +706,736 @@
     <!-- Overlay escuro. Ao clicar nele, chama toggleCart() para fechar/abrir o carrinho -->
     <div id="overlay" class="overlay" onclick="toggleCart()"></div>
 
-<!-- Cabeçalho com logo, nome da empresa e frase de apresentação -->
-<header>
-    <img src="logo.png" alt="PF NutriPet Logo" class="logo">
-    <h1>PF NutriPet 🐾</h1>
-    <p>Saúde e sabor em cada porção, alimentação natural para seu pet!</p>
-</header>
+    <!-- Cabeçalho com logo, nome da empresa e frase de apresentação -->
+    <header>
+        <img src="logo.png" alt="PF NutriPet Logo" class="logo">
+        <h1>PF NutriPet 🐾</h1>
+        <p>Saúde e sabor em cada porção, alimentação natural para seu pet!</p>
+    </header>
 
-<!-- Botões de filtro. Cada botão chama filterItems() com a categoria desejada -->
-<div class="filters">
-    <button class="filter-btn active" onclick="filterItems('todos')">Todos</button>
-    <button class="filter-btn" onclick="filterItems('comida')">Alimentação Natural</button>
-    <button class="filter-btn" onclick="filterItems('petiscos')">Petiscos</button>
-    <button class="filter-btn" onclick="filterItems('Kits')">Kits festa</button>
-</div>
+    <!-- Botões de filtro. Cada botão chama filterItems() com a categoria desejada -->
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterItems('todos')">Todos</button>
+        <button class="filter-btn" onclick="filterItems('comida')">Alimentação Natural</button>
+        <button class="filter-btn" onclick="filterItems('doces')">Doces</button>
+        <button class="filter-btn" onclick="filterItems('salgados')">Salgados</button>
+        <button class="filter-btn" onclick="filterItems('petiscos')">Petiscos</button>
+        <button class="filter-btn" onclick="filterItems('Kits')">Kits festa</button>
+    </div>
 
-<!-- Lista principal de produtos do cardápio -->
-<div class="container">
+    <!-- Lista principal de produtos do cardápio -->
+    <div class="container">
 
-    <div class="item-card" data-cat="petiscos" data-product="Banana">
-        <div class="item-info">
-            <h3>Banana</h3>
-            <p>Porções de 100g. Crocante e saudável.</p>
-            <p>Os petiscos são compostos por 3 tamanhos:
+        <div class="item-card" data-cat="petiscos" data-product="Banana">
+            <div class="item-info">
+                <h3>Banana</h3>
+                <p>Porções de 100g. Crocante e saudável.</p>
+                <p>Os petiscos são compostos por 3 tamanhos:
                 <p>
                     número 1: Indicado para adestradores.
                     número 2: Indicado para porte pequeno.
                     número 3: Indicado para porte médio e grande.
                 </p>
-            </p>
-            <div class="item-price">R$ 20,00</div>
-        </div>
-        <div class="tamanhos">
-            <p>Escolha o tamanho do corte:</p>
-            <button class="btn-size" onclick="selectSize('Banana', 'Tamanho 1', this)">Nº 1</button>
-            <button class="btn-size" onclick="selectSize('Banana', 'Tamanho 2', this)">Nº 2</button>
-            <button class="btn-size" onclick="selectSize('Banana', 'Tamanho 3', this)">Nº 3</button>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Banana', -1)">-</button>
-                <span class="qty-val" id="qty-Banana">0</span>
-                <button class="btn-qty" onclick="update('Banana', 1)">+</button>
+                </p>
+                <div class="item-price">R$ 20,00</div>
+            </div>
+            <div class="tamanhos">
+                <p>Escolha o tamanho do corte:</p>
+                <button class="btn-size" onclick="selectSize('Banana', 'Tamanho 1', this)">Nº 1</button>
+                <button class="btn-size" onclick="selectSize('Banana', 'Tamanho 2', this)">Nº 2</button>
+                <button class="btn-size" onclick="selectSize('Banana', 'Tamanho 3', this)">Nº 3</button>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Banana', -1)">-</button>
+                    <span class="qty-val" id="qty-Banana">0</span>
+                    <button class="btn-qty" onclick="update('Banana', 1)">+</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="item-card" data-cat="petiscos" data-product="Carne com beterraba">
-        <div class="item-info">
-            <h3>Carne com beterraba</h3>
-            <p>Porções de 100g. Crocante e saudável.</p>
-            <p>Os petiscos são compostos por 3 tamanhos:
+        <div class="item-card" data-cat="petiscos" data-product="Carne com beterraba">
+            <div class="item-info">
+                <h3>Carne com beterraba</h3>
+                <p>Porções de 100g. Crocante e saudável.</p>
+                <p>Os petiscos são compostos por 3 tamanhos:
                 <p>
                     número 1: Indicado para adestradores.
                     número 2: Indicado para porte pequeno.
                     número 3: Indicado para porte médio e grande.
                 </p>
-            </p>
-            <div class="item-price">R$ 20,00</div>
-        </div>
-        <div class="tamanhos">
-            <p>Escolha o tamanho do corte:</p>
-            <button class="btn-size" onclick="selectSize('Carne com beterraba', 'Tamanho 1', this)">Nº 1</button>
-            <button class="btn-size" onclick="selectSize('Carne com beterraba', 'Tamanho 2', this)">Nº 2</button>
-            <button class="btn-size" onclick="selectSize('Carne com beterraba', 'Tamanho 3', this)">Nº 3</button>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Carne com beterraba', -1)">-</button>
-                <span class="qty-val" id="qty-Carne com beterraba">0</span>
-                <button class="btn-qty" onclick="update('Carne com beterraba', 1)">+</button>
+                </p>
+                <div class="item-price">R$ 20,00</div>
+            </div>
+            <div class="tamanhos">
+                <p>Escolha o tamanho do corte:</p>
+                <button class="btn-size" onclick="selectSize('Carne com beterraba', 'Tamanho 1', this)">Nº 1</button>
+                <button class="btn-size" onclick="selectSize('Carne com beterraba', 'Tamanho 2', this)">Nº 2</button>
+                <button class="btn-size" onclick="selectSize('Carne com beterraba', 'Tamanho 3', this)">Nº 3</button>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Carne com beterraba', -1)">-</button>
+                    <span class="qty-val" id="qty-Carne com beterraba">0</span>
+                    <button class="btn-qty" onclick="update('Carne com beterraba', 1)">+</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="item-card" data-cat="petiscos" data-product="Carne com cenoura">
-        <div class="item-info">
-            <h3>Carne com cenoura</h3>
-            <p>Porções de 100g. Crocante e saudável.</p>
-            <p>Os petiscos são compostos por 3 tamanhos:
+        <div class="item-card" data-cat="petiscos" data-product="Carne com cenoura">
+            <div class="item-info">
+                <h3>Carne com cenoura</h3>
+                <p>Porções de 100g. Crocante e saudável.</p>
+                <p>Os petiscos são compostos por 3 tamanhos:
                 <p>
                     número 1: Indicado para adestradores.
                     número 2: Indicado para porte pequeno.
                     número 3: Indicado para porte médio e grande.
                 </p>
-            </p>
-            <div class="item-price">R$ 20,00</div>
-        </div>
-        <div class="tamanhos">
-            <p>Escolha o tamanho do corte:</p>
-            <button class="btn-size" onclick="selectSize('Carne com cenoura', 'Tamanho 1', this)">Nº 1</button>
-            <button class="btn-size" onclick="selectSize('Carne com cenoura', 'Tamanho 2', this)">Nº 2</button>
-            <button class="btn-size" onclick="selectSize('Carne com cenoura', 'Tamanho 3', this)">Nº 3</button>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Carne com cenoura', -1)">-</button>
-                <span class="qty-val" id="qty-Carne com cenoura">0</span>
-                <button class="btn-qty" onclick="update('Carne com cenoura', 1)">+</button>
+                </p>
+                <div class="item-price">R$ 20,00</div>
+            </div>
+            <div class="tamanhos">
+                <p>Escolha o tamanho do corte:</p>
+                <button class="btn-size" onclick="selectSize('Carne com cenoura', 'Tamanho 1', this)">Nº 1</button>
+                <button class="btn-size" onclick="selectSize('Carne com cenoura', 'Tamanho 2', this)">Nº 2</button>
+                <button class="btn-size" onclick="selectSize('Carne com cenoura', 'Tamanho 3', this)">Nº 3</button>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Carne com cenoura', -1)">-</button>
+                    <span class="qty-val" id="qty-Carne com cenoura">0</span>
+                    <button class="btn-qty" onclick="update('Carne com cenoura', 1)">+</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="item-card" data-cat="petiscos" data-product="Fígado">
-        <div class="item-info">
-            <h3>Fígado</h3>
-            <p>Porções de 100g. Crocante e saudável.</p>
-            <p>Os petiscos são compostos por 3 tamanhos:
+        <div class="item-card" data-cat="petiscos" data-product="Fígado">
+            <div class="item-info">
+                <h3>Fígado</h3>
+                <p>Porções de 100g. Crocante e saudável.</p>
+                <p>Os petiscos são compostos por 3 tamanhos:
                 <p>
                     número 1: Indicado para adestradores.
                     número 2: Indicado para porte pequeno.
                     número 3: Indicado para porte médio e grande.
                 </p>
-            </p>
-            <div class="item-price">R$ 20,00</div>
-        </div>
-        <div class="tamanhos">
-            <p>Escolha o tamanho do corte:</p>
-            <button class="btn-size" onclick="selectSize('Fígado', 'Tamanho 1', this)">Nº 1</button>
-            <button class="btn-size" onclick="selectSize('Fígado', 'Tamanho 2', this)">Nº 2</button>
-            <button class="btn-size" onclick="selectSize('Fígado', 'Tamanho 3', this)">Nº 3</button>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Fígado', -1)">-</button>
-                <span class="qty-val" id="qty-Fígado">0</span>
-                <button class="btn-qty" onclick="update('Fígado', 1)">+</button>
+                </p>
+                <div class="item-price">R$ 20,00</div>
+            </div>
+            <div class="tamanhos">
+                <p>Escolha o tamanho do corte:</p>
+                <button class="btn-size" onclick="selectSize('Fígado', 'Tamanho 1', this)">Nº 1</button>
+                <button class="btn-size" onclick="selectSize('Fígado', 'Tamanho 2', this)">Nº 2</button>
+                <button class="btn-size" onclick="selectSize('Fígado', 'Tamanho 3', this)">Nº 3</button>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Fígado', -1)">-</button>
+                    <span class="qty-val" id="qty-Fígado">0</span>
+                    <button class="btn-qty" onclick="update('Fígado', 1)">+</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="item-card" data-cat="petiscos" data-product="Carne suína">
-        <div class="item-info">
-            <h3>Carne suína</h3>
-            <p>Porções de 100g. Crocante e saudável.</p>
-            <p>Os petiscos são compostos por 3 tamanhos:
+        <div class="item-card" data-cat="petiscos" data-product="Carne suína">
+            <div class="item-info">
+                <h3>Carne suína</h3>
+                <p>Porções de 100g. Crocante e saudável.</p>
+                <p>Os petiscos são compostos por 3 tamanhos:
                 <p>
                     número 1: Indicado para adestradores.
                     número 2: Indicado para porte pequeno.
                     número 3: Indicado para porte médio e grande.
                 </p>
-            </p>
-            <div class="item-price">R$ 20,00</div>
-        </div>
-        <div class="tamanhos">
-            <p>Escolha o tamanho do corte:</p>
-            <button class="btn-size" onclick="selectSize('Carne suína', 'Tamanho 1', this)">Nº 1</button>
-            <button class="btn-size" onclick="selectSize('Carne suína', 'Tamanho 2', this)">Nº 2</button>
-            <button class="btn-size" onclick="selectSize('Carne suína', 'Tamanho 3', this)">Nº 3</button>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Carne suína', -1)">-</button>
-                <span class="qty-val" id="qty-Carne suína">0</span>
-                <button class="btn-qty" onclick="update('Carne suína', 1)">+</button>
+                </p>
+                <div class="item-price">R$ 20,00</div>
+            </div>
+            <div class="tamanhos">
+                <p>Escolha o tamanho do corte:</p>
+                <button class="btn-size" onclick="selectSize('Carne suína', 'Tamanho 1', this)">Nº 1</button>
+                <button class="btn-size" onclick="selectSize('Carne suína', 'Tamanho 2', this)">Nº 2</button>
+                <button class="btn-size" onclick="selectSize('Carne suína', 'Tamanho 3', this)">Nº 3</button>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Carne suína', -1)">-</button>
+                    <span class="qty-val" id="qty-Carne suína">0</span>
+                    <button class="btn-qty" onclick="update('Carne suína', 1)">+</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="item-card" data-cat="petiscos" data-product="Carne com abobora">
-        <div class="item-info">
-            <h3>Carne com abobora</h3>
-            <p>Porções de 100g. Crocante e saudável.</p>
-            <p>Os petiscos são compostos por 3 tamanhos:
+        <div class="item-card" data-cat="petiscos" data-product="Carne com abobora">
+            <div class="item-info">
+                <h3>Carne com abobora</h3>
+                <p>Porções de 100g. Crocante e saudável.</p>
+                <p>Os petiscos são compostos por 3 tamanhos:
                 <p>
                     número 1: Indicado para adestradores.
                     número 2: Indicado para porte pequeno.
                     número 3: Indicado para porte médio e grande.
                 </p>
-            </p>
-            <div class="item-price">R$ 20,00</div>
-        </div>
-        <div class="tamanhos">
-            <p>Escolha o tamanho do corte:</p>
-            <button class="btn-size" onclick="selectSize('Carne com abobora', 'Tamanho 1', this)">Nº 1</button>
-            <button class="btn-size" onclick="selectSize('Carne com abobora', 'Tamanho 2', this)">Nº 2</button>
-            <button class="btn-size" onclick="selectSize('Carne com abobora', 'Tamanho 3', this)">Nº 3</button>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Carne com abobora', -1)">-</button>
-                <span class="qty-val" id="qty-Carne com abobora">0</span>
-                <button class="btn-qty" onclick="update('Carne com abobora', 1)">+</button>
+                </p>
+                <div class="item-price">R$ 20,00</div>
+            </div>
+            <div class="tamanhos">
+                <p>Escolha o tamanho do corte:</p>
+                <button class="btn-size" onclick="selectSize('Carne com abobora', 'Tamanho 1', this)">Nº 1</button>
+                <button class="btn-size" onclick="selectSize('Carne com abobora', 'Tamanho 2', this)">Nº 2</button>
+                <button class="btn-size" onclick="selectSize('Carne com abobora', 'Tamanho 3', this)">Nº 3</button>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Carne com abobora', -1)">-</button>
+                    <span class="qty-val" id="qty-Carne com abobora">0</span>
+                    <button class="btn-qty" onclick="update('Carne com abobora', 1)">+</button>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="item-card" data-cat="comida">
-        <div class="item-info">
-            <h3>Delícia de Carne</h3>
-            <p>100g • Músculo bovino, legumes selecionados e arroz integral.</p>
-            <div class="item-price">R$ 8,00</div>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Delícia de Carne', -1)">-</button>
-                <span class="qty-val" id="qty-Delícia de Carne">0</span>
-                <button class="btn-qty" onclick="update('Delícia de Carne', 1)">+</button>
+        <div class="item-card" data-cat="comida">
+            <div class="item-info">
+                <h3>Delícia de Carne</h3>
+                <p>100g • Músculo bovino, legumes selecionados e arroz integral.</p>
+                <div class="item-price">R$ 8,00</div>
             </div>
-        </div>
-    </div>
-    
-    <div class="item-card" data-cat="comida">
-        <div class="item-info">
-            <h3>Caipira</h3>
-            <p>100g • Peito de frango sem pele, com legumes selecionados.</p>
-            <div class="item-price">R$ 8,00</div>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Caipira', -1)">-</button>
-                <span class="qty-val" id="qty-Caipira">0</span>
-                <button class="btn-qty" onclick="update('Caipira', 1)">+</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="item-card" data-cat="comida">
-        <div class="item-info">
-            <h3>Mineirinha</h3>
-            <p>100g • Lombo suíno, com legumes selecionados.</p>
-            <div class="item-price">R$ 8,00</div>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Mineirinha', -1)">-</button>
-                <span class="qty-val" id="qty-Mineirinha">0</span>
-                <button class="btn-qty" onclick="update('Mineirinha', 1)">+</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="item-card" data-cat="Kits">
-        <div class="item-info">
-            <h3>Kit Festa 01</h3>
-            <img src="kit1.png" alt="">
-            <div class="item-price">R$ 85,00</div>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Kit Festa 01', -1)">-</button>
-                <span class="qty-val" id="qty-Kit Festa 01">0</span>
-                <button class="btn-qty" onclick="update('Kit Festa 01', 1)">+</button>
-            </div>
-        </div>
-    </div>
-    <div class="item-card" data-cat="Kits">
-        <div class="item-info">
-            <h3>Kit Festa 02</h3>
-            <img src="kit2.png" alt="">
-            <div class="item-price">R$ 105,00</div>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Kit Festa 02', -1)">-</button>
-                <span class="qty-val" id="qty-Kit Festa 02">0</span>
-                <button class="btn-qty" onclick="update('Kit Festa 02', 1)">+</button>
-            </div>
-        </div>
-    </div>
-    <div class="item-card" data-cat="Kits">
-        <div class="item-info">
-            <h3>Kit Festa 03</h3>
-            <img src="kit3.png" alt="">
-            <div class="item-price">R$ 115,00</div>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Kit Festa 03', -1)">-</button>
-                <span class="qty-val" id="qty-Kit Festa 03">0</span>
-                <button class="btn-qty" onclick="update('Kit Festa 03', 1)">+</button>
-            </div>
-        </div>
-    </div>
-    <div class="item-card" data-cat="Kits">
-        <div class="item-info">
-            <h3>Kit Festa 04</h3>
-            <img src="kit4.png" alt="">
-            <div class="item-price">R$ 195,00</div>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Kit Festa 04', -1)">-</button>
-                <span class="qty-val" id="qty-Kit Festa 04">0</span>
-                <button class="btn-qty" onclick="update('Kit Festa 04', 1)">+</button>
-            </div>
-        </div>
-    </div>
-    <div class="item-card" data-cat="Kits">
-        <div class="item-info">
-            <h3>Kit Festa 05</h3>
-            <img src="kit5.png" alt="">
-            <div class="item-price">R$ 315,00</div>
-        </div>
-        <div class="controls">
-            <span>Quantidade</span>
-            <div class="qty-wrapper">
-                <button class="btn-qty" onclick="update('Kit Festa 05', -1)">-</button>
-                <span class="qty-val" id="qty-Kit Festa 05">0</span>
-                <button class="btn-qty" onclick="update('Kit Festa 05', 1)">+</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Botão flutuante do carrinho. Ao clicar, abre ou fecha o carrinho lateral -->
-<button class="cart-float" onclick="toggleCart()">
-    🛒
-    <span class="cart-count" id="cart-count">0</span>
-</button>
-
-<!-- Carrinho lateral, onde aparecem os produtos escolhidos e o total -->
-<div id="cart-sidebar">
-    <div class="cart-header">
-        <strong>Seu Carrinho</strong>
-        <button onclick="toggleCart()" style="background:none; border:none; color:white; font-size:1.5rem;">×</button>
-    </div>
-    <div class="cart-items" id="cart-items">
-        <p style="text-align:center; color:#999; margin-top:20px;">Seu carrinho está vazio</p>
-    </div>
-    <div class="cart-footer">
-        <!-- Caixa minimizável com os dados do cliente -->
-        <div class="customer-box" id="customer-box">
-            <button class="customer-toggle" type="button" onclick="toggleCustomerFields()">
-                <span>Dados do cliente</span>
-                <span id="customer-toggle-icon">▲</span>
-            </button>
-
-            <div class="customer-fields" id="customer-fields">
-                <label for="customer-name">Nome <span class="required">*</span></label>
-                <input type="text" id="customer-name" placeholder="Digite seu nome" required>
-
-                <label for="customer-address">Endereço <small>(opcional)</small></label>
-                <input type="text" id="customer-address" placeholder="Digite seu endereço, se desejar">
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Delícia de Carne', -1)">-</button>
+                    <span class="qty-val" id="qty-Delícia de Carne">0</span>
+                    <button class="btn-qty" onclick="update('Delícia de Carne', 1)">+</button>
+                </div>
             </div>
         </div>
 
-        <div class="total-box">
-            <span>Total:</span>
-            <span id="cart-total">R$ 0,00</span>
+        <div class="item-card" data-cat="comida">
+            <div class="item-info">
+                <h3>Caipira</h3>
+                <p>100g • Peito de frango sem pele, com legumes selecionados.</p>
+                <div class="item-price">R$ 8,00</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Caipira', -1)">-</button>
+                    <span class="qty-val" id="qty-Caipira">0</span>
+                    <button class="btn-qty" onclick="update('Caipira', 1)">+</button>
+                </div>
+            </div>
         </div>
-        <button class="filter-btn active" style="width:100%; padding:15px;" onclick="checkout()">Finalizar Pedido</button>
+
+        <div class="item-card" data-cat="comida">
+            <div class="item-info">
+                <h3>Mineirinha</h3>
+                <p>100g • Lombo suíno, com legumes selecionados.</p>
+                <div class="item-price">R$ 8,00</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Mineirinha', -1)">-</button>
+                    <span class="qty-val" id="qty-Mineirinha">0</span>
+                    <button class="btn-qty" onclick="update('Mineirinha', 1)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="item-card" data-cat="Kits">
+            <div class="item-info">
+                <h3>Kit Festa 01</h3>
+                <img src="kit1.png" alt="">
+                <div class="item-price">R$ 85,00</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Kit Festa 01', -1)">-</button>
+                    <span class="qty-val" id="qty-Kit Festa 01">0</span>
+                    <button class="btn-qty" onclick="update('Kit Festa 01', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="item-card" data-cat="Kits">
+            <div class="item-info">
+                <h3>Kit Festa 02</h3>
+                <img src="kit2.png" alt="">
+                <div class="item-price">R$ 105,00</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Kit Festa 02', -1)">-</button>
+                    <span class="qty-val" id="qty-Kit Festa 02">0</span>
+                    <button class="btn-qty" onclick="update('Kit Festa 02', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="item-card" data-cat="Kits">
+            <div class="item-info">
+                <h3>Kit Festa 03</h3>
+                <img src="kit3.png" alt="">
+                <div class="item-price">R$ 115,00</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Kit Festa 03', -1)">-</button>
+                    <span class="qty-val" id="qty-Kit Festa 03">0</span>
+                    <button class="btn-qty" onclick="update('Kit Festa 03', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="item-card" data-cat="Kits">
+            <div class="item-info">
+                <h3>Kit Festa 04</h3>
+                <img src="kit4.png" alt="">
+                <div class="item-price">R$ 195,00</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Kit Festa 04', -1)">-</button>
+                    <span class="qty-val" id="qty-Kit Festa 04">0</span>
+                    <button class="btn-qty" onclick="update('Kit Festa 04', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="item-card" data-cat="Kits">
+            <div class="item-info">
+                <h3>Kit Festa 05</h3>
+                <img src="kit5.png" alt="">
+                <div class="item-price">R$ 315,00</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Kit Festa 05', -1)">-</button>
+                    <span class="qty-val" id="qty-Kit Festa 05">0</span>
+                    <button class="btn-qty" onclick="update('Kit Festa 05', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="item-card" data-cat="doces">
+            <div class="item-info">
+                <h3>Brigaudeiro</h3>
+                <h4>Pedido minimo 6 unidades</h4>
+                <p>14g • Batata doce, Banana, Alfarroba, Melaço, Pasta de amendoim, Farinha de amendoim e Farinha de
+                    coco.</p>
+                <p>Decoração: Linhaça Marrom ou Quinoa </p>
+                <div class="item-price">R$ 2,50</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Brigaudeiro', -1)">-</button>
+                    <span class="qty-val" id="qty-Brigaudeiro">0</span>
+                    <button class="btn-qty" onclick="update('Brigaudeiro', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="item-card" data-cat="doces">
+            <div class="item-info">
+                <h3>Beujinho</h3>
+                <h4>Pedido minimo 6 unidades</h4>
+                <p>14g • Batata doce, Cará, Mel, Pasta de amendoim, Farinha de amendoim e Farinha de coco.</p>
+                <p>Decoração: Farinha de coco </p>
+                <div class="item-price">R$ 2,50</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Beujinho', -1)">-</button>
+                    <span class="qty-val" id="qty-Beujinho">0</span>
+                    <button class="btn-qty" onclick="update('Beujinho', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="item-card" data-cat="doces" data-product="Cupcake Mini">
+            <div class="item-info">
+                <h3>Cupcake Mini</h3>
+                <h4>Pedido minimo 6 unidades • 25g cada</h4>
+                <div class="sabores">
+                    <p>Escolha o sabor:</p>
+                    <button class="btn-size" onclick="selectSize('Cupcake Mini', 'Banana', this)">Banana</button>
+                    <button class="btn-size" onclick="selectSize('Cupcake Mini', 'Amendoim', this)">Amendoim</button>
+                </div>
+                <div class="item-price">R$ 4,00</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Cupcake Mini', -1)">-</button>
+                    <span class="qty-val" id="qty-Cupcake Mini">0</span>
+                    <button class="btn-qty" onclick="update('Cupcake Mini', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="item-card" data-cat="doces" data-product="Cupcake">
+            <div class="item-info">
+                <h3>Cupcake</h3>
+                <h4>Pedido minimo 6 unidades • 45g cada</h4>
+                <div class="sabores">
+                    <p>Escolha o sabor:</p>
+                    <button class="btn-size" onclick="selectSize('Cupcake', 'Banana', this)">Banana</button>
+                    <button class="btn-size" onclick="selectSize('Cupcake', 'Amendoim', this)">Amendoim</button>
+                </div>
+                <div class="item-price">R$ 7,00</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Cupcake', -1)">-</button>
+                    <span class="qty-val" id="qty-Cupcake">0</span>
+                    <button class="btn-qty" onclick="update('Cupcake', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="item-card" data-cat="salgados">
+            <div class="item-info">
+                <h3>Caoxinha</h3>
+                <h4>Pedido mínimo 6 unidades</h4>
+                <p>20g • Mandioca, Batata doce, Carne suína, Alecrim, Farinha de arroz em flocos, Sal, Banha, Salsa desidratada e Farinha de linhaça.</p>
+                <div class="item-price">R$ 2,80</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Caoxinha', -1)">-</button>
+                    <span class="qty-val" id="qty-Caoxinha">0</span>
+                    <button class="btn-qty" onclick="update('Caoxinha', 1)">+</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-<!-- Rodapé antigo. No CSS ele está oculto com display:none, pois o site usa o carrinho flutuante -->
-<footer>
-    <button class="btn-action btn-whatsapp" onclick="checkout()">🛒 Enviar Pedido</button>
-    <a href="https://www.instagram.com/pfnutripet/" target="_blank" class="btn-action btn-insta">Instagram</a>
-</footer>
+    <!-- Botão flutuante do carrinho. Ao clicar, abre ou fecha o carrinho lateral -->
+    <button class="cart-float" onclick="toggleCart()">
+        🛒
+        <span class="cart-count" id="cart-count">0</span>
+    </button>
 
-<script>
+    <!-- Carrinho lateral, onde aparecem os produtos escolhidos e o total -->
+    <div id="cart-sidebar">
+        <div class="cart-header">
+            <strong>Seu Carrinho</strong>
+            <button onclick="toggleCart()"
+                style="background:none; border:none; color:white; font-size:1.5rem;">×</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <p style="text-align:center; color:#999; margin-top:20px;">Seu carrinho está vazio</p>
+        </div>
+        <div class="cart-footer">
+            <!-- Caixa minimizável com os dados do cliente -->
+            <div class="customer-box" id="customer-box">
+                <button class="customer-toggle" type="button" onclick="toggleCustomerFields()">
+                    <span>Dados do cliente</span>
+                    <span id="customer-toggle-icon">▲</span>
+                </button>
 
-    // Todo o JavaScript abaixo controla o carrinho, filtros, tamanhos e envio para WhatsApp
+                <div class="customer-fields" id="customer-fields">
+                    <label for="customer-name">Nome <span class="required">*</span></label>
+                    <input type="text" id="customer-name" placeholder="Digite seu nome" required>
 
-    // Cria/recupera o carrinho salvo no navegador.
-    // localStorage guarda o carrinho mesmo se a pessoa atualizar a página.
-    // Se não existir carrinho salvo, começa com um objeto vazio {}.
-    let cart = JSON.parse(localStorage.getItem("cart")) || {};
-    // Guarda o tamanho escolhido para cada petisco, por exemplo: Banana -> Tamanho 1.
-    let tamanhosSelecionados = JSON.parse(localStorage.getItem("tamanhosSelecionados")) || {};
+                    <label for="customer-address">Endereço <small>(opcional)</small></label>
+                    <input type="text" id="customer-address" placeholder="Digite seu endereço, se desejar">
+                </div>
+            </div>
 
-    // Lista de preços de cada produto.
-    // O nome aqui precisa bater exatamente com o nome usado nos botões update().
-    const prices = {
-        "Delícia de Carne": 8,
-        "Caipira": 8,
-        "Mineirinha": 8,
-        "Banana": 20,
-        "Carne com beterraba": 20,
-        "Carne com cenoura": 20,
-        "Frango com cenoura": 20,
-        "Frango com beterraba": 20,
-        "Fígado": 20,
-        "Carne suína": 20,
-        "Carne com abobora": 20,
-        "Kit Festa 05": 315,
-        "Kit Festa 04": 195,
-        "Kit Festa 03": 115,
-        "Kit Festa 02": 105,
-        "Kit Festa 01": 85
-    };
-    
-    // Salva o carrinho atual no localStorage do navegador.
-    function saveCart(){
-        localStorage.setItem("cart", JSON.stringify(cart));
-    }
+            <div class="total-box">
+                <span>Total:</span>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            <button class="filter-btn active" style="width:100%; padding:15px;" onclick="checkout()">Finalizar
+                Pedido</button>
+        </div>
+    </div>
 
-    // Salva os tamanhos selecionados no localStorage do navegador.
-    // Assim, se a pessoa abrir/fechar o carrinho ou atualizar a página,
-    // o tamanho escolhido do petisco continua aparecendo.
-    function saveSizes(){
-        localStorage.setItem("tamanhosSelecionados", JSON.stringify(tamanhosSelecionados));
-    }
-    
-    // Atualiza a quantidade de um produto no carrinho.
-    // product = nome do produto.
-    // change = +1 para adicionar ou -1 para remover.
-    function update(product, change) {
-    
-        // Se o produto ainda não existe no carrinho, começa com quantidade 0.
-        if (!cart[product]) cart[product] = 0;
-    
-        // Soma ou subtrai a quantidade do produto.
-        cart[product] += change;
-    
-        // Se a quantidade ficar 0 ou menor, remove o produto do carrinho.
-        if (cart[product] <= 0) delete cart[product];
-    
-        // Procura na página o elemento que mostra a quantidade desse produto.
-        const qtyEl = document.getElementById(`qty-${product}`);
-    
-        // Atualiza o número visível na tela. Se o produto não existir mais, mostra 0.
-        if (qtyEl) qtyEl.innerText = cart[product] || 0;
-    
-        // Salva o carrinho, atualiza o contador do ícone e redesenha a lista do carrinho.
-        saveCart();
-        updateCartCount();
-        // Atualiza os itens do carrinho sempre que ele for aberto/fechado.
-        renderCart();
-    }
-    
-    // Atualiza a bolinha vermelha do carrinho com a quantidade total de itens.
-    function updateCartCount(){
-    
-        // Começa o total em 0.
-        let total = 0;
-    
-        // Percorre todos os produtos do carrinho e soma suas quantidades.
-        // Percorre cada produto dentro do carrinho.
-            // Percorre todos os itens do carrinho para montar a mensagem do pedido.
-for(let item in cart){
-            total += cart[item];
-        }
-    
-        // Mostra o total na bolinha do carrinho.
-        document.getElementById("cart-count").innerText = total;
-    }
-    
-    // Abre ou fecha o carrinho lateral.
-    function toggleCart(){
-    
-        // Adiciona/remove a classe 'open' para fazer o carrinho aparecer ou sumir.
-        document.getElementById('cart-sidebar').classList.toggle('open');
-        // Mostra ou esconde o fundo escuro atrás do carrinho.
-        document.getElementById('overlay').classList.toggle('active');
-        renderCart();
-    }
-    
+    <!-- Rodapé antigo. No CSS ele está oculto com display:none, pois o site usa o carrinho flutuante -->
+    <footer>
+        <button class="btn-action btn-whatsapp" onclick="checkout()">🛒 Enviar Pedido</button>
+        <a href="https://www.instagram.com/pfnutripet/" target="_blank" class="btn-action btn-insta">Instagram</a>
+    </footer>
 
-    
+    <script>
 
-    // Fecha o carrinho lateral.
-    // Isso evita que o carrinho fique por cima do alert e corte a visualização.
-    function closeCart(){
+        // Todo o JavaScript abaixo controla o carrinho, filtros, tamanhos e envio para WhatsApp
 
-        document.getElementById('cart-sidebar').classList.remove('open');
-        document.getElementById('overlay').classList.remove('active');
-    }
+        // Cria/recupera o carrinho salvo no navegador.
+        // localStorage guarda o carrinho mesmo se a pessoa atualizar a página.
+        // Se não existir carrinho salvo, começa com um objeto vazio {}.
+        let cart = JSON.parse(localStorage.getItem("cart")) || {};
+        // Guarda o tamanho escolhido para cada petisco, por exemplo: Banana -> Tamanho 1.
+        let tamanhosSelecionados = JSON.parse(localStorage.getItem("tamanhosSelecionados")) || {};
 
-    // Mostra um alert personalizado.
-    // Sempre fecha o carrinho antes, para o alerta aparecer inteiro na tela.
-    function showCustomAlert(options){
+        // Lista de preços de cada produto.
+        // O nome aqui precisa bater exatamente com o nome usado nos botões update().
+        const prices = {
+            "Delícia de Carne": 8,
+            "Caipira": 8,
+            "Mineirinha": 8,
+            "Banana": 20,
+            "Carne com beterraba": 20,
+            "Carne com cenoura": 20,
+            "Frango com cenoura": 20,
+            "Frango com beterraba": 20,
+            "Fígado": 20,
+            "Carne suína": 20,
+            "Carne com abobora": 20,
+            "Kit Festa 05": 315,
+            "Kit Festa 04": 195,
+            "Kit Festa 03": 115,
+            "Kit Festa 02": 105,
+            "Kit Festa 01": 85,
+            "Brigaudeiro": 2.50,
+            "Beujinho": 2.50,
+            "Cupcake Mini": 4.00,
+            "Cupcake": 7.00,
+            "Caoxinha": 2.80
+        };
 
-        closeCart();
-
-        return Swal.fire({
-            confirmButtonColor:"#079689",
-            ...options
-        });
-    }
-
-// Minimiza ou expande a área de dados do cliente dentro do carrinho.
-    function toggleCustomerFields(){
-
-        const customerBox = document.getElementById("customer-box");
-        const icon = document.getElementById("customer-toggle-icon");
-
-        if(!customerBox || !icon) return;
-
-        customerBox.classList.toggle("collapsed");
-
-        if(customerBox.classList.contains("collapsed")){
-            icon.innerText = "▼";
-        }else{
-            icon.innerText = "▲";
-        }
-    }
-
-    // Abre a área de dados do cliente.
-    // Usada quando a pessoa tenta finalizar sem preencher o nome.
-    function openCustomerFields(){
-
-        const customerBox = document.getElementById("customer-box");
-        const icon = document.getElementById("customer-toggle-icon");
-
-        if(customerBox){
-            customerBox.classList.remove("collapsed");
+        // Salva o carrinho atual no localStorage do navegador.
+        function saveCart() {
+            localStorage.setItem("cart", JSON.stringify(cart));
         }
 
-        if(icon){
-            icon.innerText = "▲";
-        }
-    }
-
-    // Remove completamente um produto do carrinho.
-    function removeProduct(product){
-    
-        // Apaga o produto do objeto cart.
-        delete cart[product];
-
-        // Apaga também o tamanho escolhido desse produto, se existir.
-        delete tamanhosSelecionados[product];
-    
-        // Procura na página o elemento que mostra a quantidade desse produto.
-        const qtyEl = document.getElementById(`qty-${product}`);
-    
-        if(qtyEl) qtyEl.innerText = 0;
-    
-        // Salva o carrinho, salva os tamanhos, atualiza o contador do ícone e redesenha a lista do carrinho.
-        saveCart();
-        saveSizes();
-        updateCartCount();
-        renderCart();
-    }
-    
-    // Desenha/atualiza visualmente o carrinho lateral.
-    function renderCart(){
-
-        // Pega a área onde os produtos do carrinho serão exibidos.
-        const container = document.getElementById('cart-items');
-
-        // Pega o elemento onde o total em reais será exibido.
-        const totalEl = document.getElementById('cart-total');
-
-        // Limpa o conteúdo atual do carrinho antes de redesenhar tudo.
-        container.innerHTML = "";
-
-        // Começa o total em 0.
-        let total = 0;
-
-        // Se o carrinho estiver vazio, mostra a mensagem de carrinho vazio.
-        if(Object.keys(cart).length === 0){
-
-            container.innerHTML = '<p style="text-align:center;color:#999;margin-top:20px;">Seu carrinho está vazio</p>';
-
-            totalEl.innerText = "R$ 0,00";
-
-            return;
+        // Salva os tamanhos selecionados no localStorage do navegador.
+        // Assim, se a pessoa abrir/fechar o carrinho ou atualizar a página,
+        // o tamanho escolhido do petisco continua aparecendo.
+        function saveSizes() {
+            localStorage.setItem("tamanhosSelecionados", JSON.stringify(tamanhosSelecionados));
         }
 
-        // Percorre cada produto dentro do carrinho.
-        for(let item in cart){
+        // Verifica a categoria do produto pelo card onde está a quantidade
+        function getProductCategory(product) {
 
-            // Busca o preço do produto. Se não encontrar, usa 0 para evitar erro.
-            let preco = prices[item] || 0;
+            const qtyEl = document.getElementById(`qty-${product}`);
+            const card = qtyEl ? qtyEl.closest(".item-card") : null;
 
-            // Calcula subtotal: preço x quantidade.
-            let subtotal = preco * cart[item];
+            return card ? card.dataset.cat : "";
+        }
 
-            // Soma o subtotal ao total geral do pedido.
-            total += subtotal;
+        // Doces e salgados têm pedido mínimo de 6 unidades
+        function isMinSixProduct(product) {
 
-            // Verifica se esse produto é um petisco que precisa escolher tamanho.
-            const card = document.querySelector(`[data-product="${item}"]`);
-            const precisaTamanho = card && card.querySelector(".tamanhos");
+            const categoria = getProductCategory(product);
 
-            let tamanhoInfo = "";
-            let botoesTamanho = "";
+            return categoria === "doces" || categoria === "salgados";
+        }
 
-            // Se for petisco, mostra o tamanho escolhido ou permite escolher pelo carrinho.
-            if(precisaTamanho){
+        // Atualiza a quantidade de um produto no carrinho.
+        // product = nome do produto.
+        // change = +1 para adicionar ou -1 para remover.
+        function update(product, change) {
 
-                if(tamanhosSelecionados[item]){
-                    tamanhoInfo = `<small><strong>Tamanho:</strong> ${tamanhosSelecionados[item]}</small><br>`;
-                }else{
-                    tamanhoInfo = `<small class="cart-size-alert">Escolha o tamanho do petisco</small><br>`;
+            const produtoMinimo6 = isMinSixProduct(product);
+
+            // Se o produto ainda não existe no carrinho, começa com quantidade 0.
+            if (!cart[product]) cart[product] = 0;
+
+            // Regra para doces e salgados: 0 ou mínimo 6 unidades
+            if (produtoMinimo6) {
+
+                if (change > 0) {
+
+                    // Se estiver zerado, o primeiro clique já coloca 6 unidades
+                    if (cart[product] === 0) {
+                        cart[product] = 6;
+                    } else {
+                        cart[product] += 1;
+                    }
+
+                } else {
+
+                    // Se estiver com 6 ou menos, ao diminuir volta para 0
+                    if (cart[product] <= 6) {
+                        delete cart[product];
+                    } else {
+                        cart[product] -= 1;
+                    }
                 }
 
-                botoesTamanho = `
+            } else {
+
+                // Regra normal para os outros produtos
+                cart[product] += change;
+
+                if (cart[product] <= 0) delete cart[product];
+            }
+
+            const qtyEl = document.getElementById(`qty-${product}`);
+
+            if (qtyEl) qtyEl.innerText = cart[product] || 0;
+
+            saveCart();
+            updateCartCount();
+            renderCart();
+        }
+
+        // Atualiza a bolinha vermelha do carrinho com a quantidade total de itens.
+        function updateCartCount() {
+
+            // Começa o total em 0.
+            let total = 0;
+
+            // Percorre todos os produtos do carrinho e soma suas quantidades.
+            // Percorre cada produto dentro do carrinho.
+            // Percorre todos os itens do carrinho para montar a mensagem do pedido.
+            for (let item in cart) {
+                total += cart[item];
+            }
+
+            // Mostra o total na bolinha do carrinho.
+            document.getElementById("cart-count").innerText = total;
+        }
+
+        // Abre ou fecha o carrinho lateral.
+        function toggleCart() {
+
+            // Adiciona/remove a classe 'open' para fazer o carrinho aparecer ou sumir.
+            document.getElementById('cart-sidebar').classList.toggle('open');
+            // Mostra ou esconde o fundo escuro atrás do carrinho.
+            document.getElementById('overlay').classList.toggle('active');
+            renderCart();
+        }
+
+        // Fecha o carrinho lateral.
+        // Isso evita que o carrinho fique por cima do alert e corte a visualização.
+        function closeCart() {
+
+            document.getElementById('cart-sidebar').classList.remove('open');
+            document.getElementById('overlay').classList.remove('active');
+        }
+
+        // Mostra um alert personalizado.
+        // Sempre fecha o carrinho antes, para o alerta aparecer inteiro na tela.
+        function showCustomAlert(options) {
+
+            closeCart();
+
+            return Swal.fire({
+                confirmButtonColor: "#079689",
+                ...options
+            });
+        }
+
+        // Minimiza ou expande a área de dados do cliente dentro do carrinho.
+        function toggleCustomerFields() {
+
+            const customerBox = document.getElementById("customer-box");
+            const icon = document.getElementById("customer-toggle-icon");
+
+            if (!customerBox || !icon) return;
+
+            customerBox.classList.toggle("collapsed");
+
+            if (customerBox.classList.contains("collapsed")) {
+                icon.innerText = "▼";
+            } else {
+                icon.innerText = "▲";
+            }
+        }
+
+        // Abre a área de dados do cliente.
+        // Usada quando a pessoa tenta finalizar sem preencher o nome.
+        function openCustomerFields() {
+
+            const customerBox = document.getElementById("customer-box");
+            const icon = document.getElementById("customer-toggle-icon");
+
+            if (customerBox) {
+                customerBox.classList.remove("collapsed");
+            }
+
+            if (icon) {
+                icon.innerText = "▲";
+            }
+        }
+
+        // Remove completamente um produto do carrinho.
+        function removeProduct(product) {
+
+            // Apaga o produto do objeto cart.
+            delete cart[product];
+
+            // Apaga também o tamanho escolhido desse produto, se existir.
+            delete tamanhosSelecionados[product];
+
+            // Procura na página o elemento que mostra a quantidade desse produto.
+            const qtyEl = document.getElementById(`qty-${product}`);
+
+            if (qtyEl) qtyEl.innerText = 0;
+
+            // Salva o carrinho, salva os tamanhos, atualiza o contador do ícone e redesenha a lista do carrinho.
+            saveCart();
+            saveSizes();
+            updateCartCount();
+            renderCart();
+        }
+
+        // Desenha/atualiza visualmente o carrinho lateral.
+        function renderCart() {
+
+            // Pega a área onde os produtos do carrinho serão exibidos.
+            const container = document.getElementById('cart-items');
+
+            // Pega o elemento onde o total em reais será exibido.
+            const totalEl = document.getElementById('cart-total');
+
+            // Limpa o conteúdo atual do carrinho antes de redesenhar tudo.
+            container.innerHTML = "";
+
+            // Começa o total em 0.
+            let total = 0;
+
+            // Se o carrinho estiver vazio, mostra a mensagem de carrinho vazio.
+            if (Object.keys(cart).length === 0) {
+
+                container.innerHTML = '<p style="text-align:center;color:#999;margin-top:20px;">Seu carrinho está vazio</p>';
+
+                totalEl.innerText = "R$ 0,00";
+
+                return;
+            }
+
+            // Percorre cada produto dentro do carrinho.
+            for (let item in cart) {
+
+                // Busca o preço do produto. Se não encontrar, usa 0 para evitar erro.
+                let preco = prices[item] || 0;
+
+                // Calcula subtotal: preço x quantidade.
+                let subtotal = preco * cart[item];
+
+                // Soma o subtotal ao total geral do pedido.
+                total += subtotal;
+
+                // Verifica se esse produto é um petisco que precisa escolher tamanho.
+                const qtyElItem = document.getElementById(`qty-${item}`);
+                const card = qtyElItem ? qtyElItem.closest(".item-card") : document.querySelector(`[data-product="${item}"]`);
+
+                const precisaTamanho = card && card.querySelector(".tamanhos");
+                const precisaSabor = card && card.querySelector(".sabores");
+
+                let tamanhoInfo = "";
+                let botoesTamanho = "";
+
+                // Se for petisco, mostra o tamanho escolhido ou permite escolher pelo carrinho.
+                if (precisaTamanho) {
+
+                    if (tamanhosSelecionados[item]) {
+                        tamanhoInfo = `<small><strong>Tamanho:</strong> ${tamanhosSelecionados[item]}</small><br>`;
+                    } else {
+                        tamanhoInfo = `<small class="cart-size-alert">Escolha o tamanho do petisco</small><br>`;
+                    }
+
+                    botoesTamanho = `
                     <div class="cart-size-options">
                         <small>Selecionar tamanho:</small>
                         <div class="cart-size-buttons">
@@ -1207,305 +1445,371 @@ for(let item in cart){
                         </div>
                     </div>
                 `;
+                }
+
+                if (precisaSabor) {
+                    if (tamanhosSelecionados[item]) {
+                        tamanhoInfo = `<small><strong>Sabor:</strong> ${tamanhosSelecionados[item]}</small><br>`;
+                    } else {
+                        tamanhoInfo = `<small class="cart-size-alert">Escolha o sabor do cupcake</small><br>`;
+                    }
+                    botoesTamanho = `
+                        <div class="cart-size-options">
+                            <small>Selecionar sabor:</small>
+                            <div class="cart-size-buttons">
+                                <button class="cart-size-btn ${tamanhosSelecionados[item] === 'Banana' ? 'selected' : ''}" onclick="selectSizeFromCart('${item}', 'Banana')">Banana</button>
+                                <button class="cart-size-btn ${tamanhosSelecionados[item] === 'Amendoim' ? 'selected' : ''}" onclick="selectSizeFromCart('${item}', 'Amendoim')">Amendoim</button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Adiciona o produto na lista visual do carrinho.
+                container.innerHTML += `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <strong>${cart[item]}x ${item}</strong><br>
+                        ${tamanhoInfo}
+                        <small>Subtotal: R$ ${subtotal.toFixed(2)}</small>
+                        ${botoesTamanho}
+                    </div>
+                    <button class="btn-remove" onclick="removeProduct('${item}')">Remover</button>
+                </div>
+                `;
             }
 
-            // Adiciona o produto na lista visual do carrinho.
-            container.innerHTML += `
-            <div class="cart-item">
-                <div class="cart-item-info">
-                    <strong>${cart[item]}x ${item}</strong><br>
-                    ${tamanhoInfo}
-                    <small>Subtotal: R$ ${subtotal.toFixed(2)}</small>
-                    ${botoesTamanho}
-                </div>
-                <button class="btn-remove" onclick="removeProduct('${item}')">Remover</button>
-            </div>
-            `;
+            // Mostra o total final com 2 casas decimais.
+            totalEl.innerText = `R$ ${total.toFixed(2)}`;
         }
 
-        // Mostra o total final com 2 casas decimais.
-        totalEl.innerText = `R$ ${total.toFixed(2)}`;
-    }
-    
-    // Filtra os produtos exibidos por categoria.
-    // cat pode ser: todos, comida, petiscos ou Kits.
-    function filterItems(cat){
-    
-        // Remove a classe active de todos os botões de filtro.
-        document.querySelectorAll(".filter-btn").forEach(btn=>btn.classList.remove("active"));
-    
-        // Marca o botão clicado como ativo.
-        event.target.classList.add("active");
-    
-        // Percorre todos os cards de produto para decidir se mostra ou esconde.
-        document.querySelectorAll(".item-card").forEach(card=>{
-    
-            // Se o filtro for "todos" ou se a categoria do card for igual à escolhida, mostra o produto.
-            if(cat==="todos" || card.dataset.cat === cat){
-    
-                // Remove a classe hidden para o produto aparecer.
-                card.classList.remove("hidden");
-    
-            }else{
-    
-                // Adiciona a classe hidden para o produto sumir.
-                card.classList.add("hidden");
-    
-            }
-    
-        });
-    }
-    
-    // Salva o tamanho escolhido para um petisco.
-    // produto = nome do produto.
-    // tamanho = tamanho escolhido.
-    // elemento = botão clicado.
+        // Filtra os produtos exibidos por categoria.
+        // cat pode ser: todos, comida, petiscos ou Kits.
+        function filterItems(cat) {
+
+            // Remove a classe active de todos os botões de filtro.
+            document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+
+            // Marca o botão clicado como ativo.
+            event.target.classList.add("active");
+
+            // Percorre todos os cards de produto para decidir se mostra ou esconde.
+            document.querySelectorAll(".item-card").forEach(card => {
+
+                // Se o filtro for "todos" ou se a categoria do card for igual à escolhida, mostra o produto.
+                if (cat === "todos" || card.dataset.cat === cat) {
+
+                    // Remove a classe hidden para o produto aparecer.
+                    card.classList.remove("hidden");
+
+                } else {
+
+                    // Adiciona a classe hidden para o produto sumir.
+                    card.classList.add("hidden");
+
+                }
+
+            });
+        }
+
+        // Salva o tamanho escolhido para um petisco.
+        // produto = nome do produto.
+        // tamanho = tamanho escolhido.
+        // elemento = botão clicado.
         // Sincroniza visualmente o tamanho selecionado no card do produto.
-    function syncProductSizeButtons(produto){
+        function syncProductSizeButtons(produto) {
 
-        const card = document.querySelector(`[data-product="${produto}"]`);
+            const qtyEl = document.getElementById(`qty-${produto}`);
+            const card = qtyEl ? qtyEl.closest(".item-card") : document.querySelector(`[data-product="${produto}"]`);
 
-        if(!card) return;
+            if (!card) return;
 
-        card.querySelectorAll(".btn-size").forEach(btn=>{
+            card.querySelectorAll(".btn-size").forEach(btn => {
             btn.classList.remove("selected");
 
             const onclickValue = btn.getAttribute("onclick") || "";
 
-            if(tamanhosSelecionados[produto] && onclickValue.includes(tamanhosSelecionados[produto])){
+            if (tamanhosSelecionados[produto] && onclickValue.includes(tamanhosSelecionados[produto])) {
                 btn.classList.add("selected");
             }
         });
-    }
-
-    // Salva o tamanho escolhido para um petisco pelo card do produto.
-    // produto = nome do produto.
-    // tamanho = tamanho escolhido.
-    // elemento = botão clicado.
-    function selectSize(produto, tamanho, elemento){
-
-        // Guarda o tamanho escolhido.
-        tamanhosSelecionados[produto] = tamanho;
-
-        // Salva o tamanho no navegador.
-        saveSizes();
-
-        // Atualiza os botões do card do produto.
-        syncProductSizeButtons(produto);
-
-        // Atualiza o carrinho imediatamente.
-        renderCart();
-    }
-
-    // Salva o tamanho escolhido diretamente pelo carrinho.
-    // Assim, se a pessoa adicionou o petisco sem escolher tamanho,
-    // ela não precisa remover o produto: escolhe o tamanho no próprio carrinho.
-    function selectSizeFromCart(produto, tamanho){
-
-        tamanhosSelecionados[produto] = tamanho;
-
-        saveSizes();
-
-        syncProductSizeButtons(produto);
-
-        renderCart();
-    }
-    
-    // Finaliza o pedido: valida o carrinho, monta a mensagem e abre o WhatsApp.
-    function checkout(){
-
-    // Se o carrinho estiver vazio, mostra um alerta e não deixa finalizar.
-if(Object.keys(cart).length === 0){
-
-    showCustomAlert({
-        icon:"info",
-        title:"Carrinho vazio",
-        text:"Escolha algo para seu pet!",
-    });
-
-    return;
 }
 
+        // Salva o tamanho escolhido para um petisco pelo card do produto.
+        // produto = nome do produto.
+        // tamanho = tamanho escolhido.
+        // elemento = botão clicado.
+        function selectSize(produto, tamanho, elemento) {
 
-    // Pega os dados digitados pelo cliente.
-    const nomeCliente = document.getElementById("customer-name").value.trim();
-    const enderecoCliente = document.getElementById("customer-address").value.trim();
+            // Guarda o tamanho escolhido.
+            tamanhosSelecionados[produto] = tamanho;
 
-    // Nome é obrigatório. Se não preencher, o pedido não finaliza.
-    if(nomeCliente === ""){
+            // Salva o tamanho no navegador.
+            saveSizes();
 
-        openCustomerFields();
-
-        const nomeInput = document.getElementById("customer-name");
-        if(nomeInput) nomeInput.focus();
-
-        showCustomAlert({
-            icon:"warning",
-            title:"Nome obrigatório",
-            text:"Por favor, digite seu nome para finalizar o pedido."
-        }).then(()=>{
-
-            document.getElementById('cart-sidebar').classList.add('open');
-            document.getElementById('overlay').classList.add('active');
-            openCustomerFields();
-
-            const nomeInputDepois = document.getElementById("customer-name");
-            if(nomeInputDepois) nomeInputDepois.focus();
-
-        });
-
-        return;
-    }
-
-    // Começa a montar a mensagem que será enviada pelo WhatsApp.
-let msg = " *NOVO PEDIDO - PF NUTRIPET* \n\n";
-
-msg += "━━━━━━━━━━━━━━━\n";
-msg += " *DADOS DO CLIENTE*\n";
-msg += "━━━━━━━━━━━━━━━\n";
-msg += `*Nome:* ${nomeCliente}\n`;
-
-// Endereço é opcional. Só aparece se o cliente preencher.
-if(enderecoCliente !== ""){
-    msg += `*Endereço:* ${enderecoCliente}\n`;
-}
-
-msg += "\n━━━━━━━━━━━━━━━\n";
-msg += "*ITENS DO PEDIDO*\n";
-msg += "━━━━━━━━━━━━━━━\n\n";
-
-    // Lista para guardar produtos que precisam de tamanho, mas ainda não tiveram tamanho escolhido.
-let faltaTamanho = [];
-
-for(let item in cart){
-
-    // Procura o card do produto na página usando o atributo data-product.
-    const card = document.querySelector(`[data-product="${item}"]`);
-
-    // Se o produto tem área de tamanhos e nenhum tamanho foi escolhido, adiciona na lista de pendências.
-    if(card && card.querySelector(".tamanhos") && !tamanhosSelecionados[item]){
-        faltaTamanho.push(item);
-    }
-
-    // Adiciona na mensagem a quantidade, o nome do produto e o tamanho, se existir.
-    msg += ` *${cart[item]}x* ${item}`;
-
-    if(tamanhosSelecionados[item]){
-        msg += `\n   ↳ Tamanho: ${tamanhosSelecionados[item]}`;
-    }
-
-    msg += "\n\n";
-}
-
-    // Se tiver produto sem tamanho escolhido, mostra alerta e para o checkout.
-if(faltaTamanho.length > 0){
-
-    // Abre o carrinho para a pessoa escolher o tamanho sem remover o produto.
-    document.getElementById('cart-sidebar').classList.add('open');
-    document.getElementById('overlay').classList.add('active');
-    renderCart();
-
-    showCustomAlert({
-        icon:"warning",
-        title:"Escolha o tamanho",
-        html:`Escolha o tamanho no próprio carrinho para: <b>${faltaTamanho.join(", ")}</b>`
-    }).then(()=>{
-
-        document.getElementById('cart-sidebar').classList.add('open');
-        document.getElementById('overlay').classList.add('active');
-        renderCart();
-
-    });
-
-    return;
-}
-
-    // Adiciona o total do carrinho na mensagem do WhatsApp.
-msg += "━━━━━━━━━━━━━━━\n";
-msg += ` *TOTAL: ${document.getElementById("cart-total").innerText}*\n`;
-msg += "━━━━━━━━━━━━━━━\n\n";
-msg += "Aguardando confirmação do pedido. ";
-
-showCustomAlert({
-    icon:"success",
-    title:"Pedido pronto!",
-    text:"Abrindo WhatsApp...",
-    confirmButtonColor:"#079689"
-}).then(()=>{
-
-    // Cria o link do WhatsApp com o número da loja e a mensagem codificada.
-    const url = `https://wa.me/5511975240578?text=${encodeURIComponent(msg)}`;
-
-    // Abre o WhatsApp em uma nova aba/janela.
-    window.open(url, "_blank");
-
-    // Limpa o carrinho depois que o pedido foi enviado para o WhatsApp.
-    clearCart();
-
-});
-
-}
-    
-    /* carregar carrinho ao abrir site */
-    
-    // Carrega o carrinho salvo quando o site abre.
-    function loadCart(){
-
-        // Percorre cada produto dentro do carrinho.
-        for(let item in cart){
-
-            const qtyEl = document.getElementById(`qty-${item}`);
-
-            if(qtyEl){
-
-                qtyEl.innerText = cart[item];
-            }
-        }
-
-        // Reaplica visualmente os tamanhos que já estavam salvos.
-        for(let produto in tamanhosSelecionados){
+            // Atualiza os botões do card do produto.
             syncProductSizeButtons(produto);
+
+            // Atualiza o carrinho imediatamente.
+            renderCart();
         }
 
-        updateCartCount();
-        renderCart();
-    }
+        // Salva o tamanho escolhido diretamente pelo carrinho.
+        // Assim, se a pessoa adicionou o petisco sem escolher tamanho,
+        // ela não precisa remover o produto: escolhe o tamanho no próprio carrinho.
+        function selectSizeFromCart(produto, tamanho) {
 
-    // Limpa todo o carrinho e todos os tamanhos selecionados.
-    function clearCart(){
-        // Esvazia o objeto do carrinho.
-        cart = {};
-        // Esvazia os tamanhos selecionados.
-        tamanhosSelecionados = {};
-        // Remove o carrinho salvo do navegador.
-        localStorage.removeItem("cart");
+            tamanhosSelecionados[produto] = tamanho;
 
-        // Remove também os tamanhos salvos do navegador.
-        localStorage.removeItem("tamanhosSelecionados");
+            saveSizes();
 
-        // Zera visualmente todas as quantidades que aparecem nos cards.
-        document.querySelectorAll(".qty-val").forEach(q=>{
-            q.innerText = 0;
-        });
+            syncProductSizeButtons(produto);
 
-        // Remove a seleção visual dos botões de tamanho.
-        document.querySelectorAll(".btn-size").forEach(btn=>{
-            btn.classList.remove("selected");
-        });
+            renderCart();
+        }
 
-        // Limpa os campos de nome e endereço depois de finalizar o pedido.
-        const nomeCliente = document.getElementById("customer-name");
-        const enderecoCliente = document.getElementById("customer-address");
+        // Finaliza o pedido: valida o carrinho, monta a mensagem e abre o WhatsApp.
+        function checkout() {
 
-        if(nomeCliente) nomeCliente.value = "";
-        if(enderecoCliente) enderecoCliente.value = "";
+            // Se o carrinho estiver vazio, mostra um alerta e não deixa finalizar.
+            if (Object.keys(cart).length === 0) {
 
-        updateCartCount();
-        renderCart();
-    }
-    // Quando a página terminar de carregar, executa loadCart para restaurar o carrinho salvo.
-    window.onload = loadCart;
+                showCustomAlert({
+                    icon: "info",
+                    title: "Carrinho vazio",
+                    text: "Escolha algo para seu pet!",
+                });
+
+                return;
+            }
+
+
+            // Pega os dados digitados pelo cliente.
+            const nomeCliente = document.getElementById("customer-name").value.trim();
+            const enderecoCliente = document.getElementById("customer-address").value.trim();
+
+            // Nome é obrigatório. Se não preencher, o pedido não finaliza.
+            if (nomeCliente === "") {
+
+                openCustomerFields();
+
+                const nomeInput = document.getElementById("customer-name");
+                if (nomeInput) nomeInput.focus();
+
+                showCustomAlert({
+                    icon: "warning",
+                    title: "Nome obrigatório",
+                    text: "Por favor, digite seu nome para finalizar o pedido."
+                }).then(() => {
+
+                    document.getElementById('cart-sidebar').classList.add('open');
+                    document.getElementById('overlay').classList.add('active');
+                    openCustomerFields();
+
+                    const nomeInputDepois = document.getElementById("customer-name");
+                    if (nomeInputDepois) nomeInputDepois.focus();
+
+                });
+
+                return;
+            }
+
+            // Começa a montar a mensagem que será enviada pelo WhatsApp.
+            let msg = " *NOVO PEDIDO - PF NUTRIPET* \n\n";
+            // Valida pedido mínimo de doces e salgados
+            let produtosAbaixoDoMinimo = [];
+
+            for (let item in cart) {
+
+                if (isMinSixProduct(item) && cart[item] < 6) {
+                    produtosAbaixoDoMinimo.push(item);
+                }
+            }
+
+            if (produtosAbaixoDoMinimo.length > 0) {
+
+                showCustomAlert({
+                    icon: "warning",
+                    title: "Pedido mínimo",
+                    html: `Doces e salgados devem ter pedido mínimo de <b>6 unidades</b>.<br><br>Verifique: <b>${produtosAbaixoDoMinimo.join(", ")}</b>`
+                });
+
+                return;
+            }
+
+            msg += "━━━━━━━━━━━━━━━\n";
+            msg += " *DADOS DO CLIENTE*\n";
+            msg += "━━━━━━━━━━━━━━━\n";
+            msg += `*Nome:* ${nomeCliente}\n`;
+
+            // Endereço é opcional. Só aparece se o cliente preencher.
+            if (enderecoCliente !== "") {
+                msg += `*Endereço:* ${enderecoCliente}\n`;
+            }
+
+            msg += "\n━━━━━━━━━━━━━━━\n";
+            msg += "*ITENS DO PEDIDO*\n";
+            msg += "━━━━━━━━━━━━━━━\n";
+
+            // Lista para guardar produtos que precisam de tamanho, mas ainda não tiveram tamanho escolhido.
+            let faltaTamanho = [];
+            let faltaSabor = [];
+
+            for (let item in cart) {
+
+                // Procura o card do produto na página usando o atributo data-product.
+                const qtyElItem = document.getElementById(`qty-${item}`);
+                const card = qtyElItem ? qtyElItem.closest(".item-card") : document.querySelector(`[data-product="${item}"]`);
+
+                // Se o produto tem área de tamanhos e nenhum tamanho foi escolhido, adiciona na lista de pendências.
+                if (card && card.querySelector(".tamanhos") && !tamanhosSelecionados[item]) {
+                    faltaTamanho.push(item);
+                }
+                if (card && card.querySelector(".sabores") && !tamanhosSelecionados[item]) {
+                    faltaSabor.push(item);
+                }
+
+                // Adiciona na mensagem a quantidade, o nome do produto e o tamanho, se existir.
+                msg += ` *${cart[item]}x* ${item}`;
+
+                if (tamanhosSelecionados[item]) {
+
+                    if (card && card.querySelector(".sabores")) {
+                        msg += `\n   ↳ Sabor: ${tamanhosSelecionados[item]}\n`;
+                    } else {
+                        msg += `\n   ↳ Tamanho: ${tamanhosSelecionados[item]}\n`;
+                    }
+                }
+            }
+
+            // Se tiver produto sem tamanho escolhido, mostra alerta e para o checkout.
+            if (faltaTamanho.length > 0) {
+
+                // Abre o carrinho para a pessoa escolher o tamanho sem remover o produto.
+                document.getElementById('cart-sidebar').classList.add('open');
+                document.getElementById('overlay').classList.add('active');
+                renderCart();
+
+                showCustomAlert({
+                    icon: "warning",
+                    title: "Escolha o tamanho",
+                    html: `Escolha o tamanho no próprio carrinho para: <b>${faltaTamanho.join(", ")}</b>`
+                }).then(() => {
+
+                    document.getElementById('cart-sidebar').classList.add('open');
+                    document.getElementById('overlay').classList.add('active');
+                    renderCart();
+
+                });
+
+                return;
+            }
+            if (faltaSabor.length > 0) {
+                document.getElementById('cart-sidebar').classList.add('open');
+                document.getElementById('overlay').classList.add('active');
+                renderCart();
+
+                showCustomAlert({
+                    icon: "warning",
+                    title: "Escolha o sabor",
+                    html: `Escolha o sabor no próprio carrinho para: <b>${faltaSabor.join(", ")}</b>`
+                }).then(() => {
+
+                    document.getElementById('cart-sidebar').classList.add('open');
+                    document.getElementById('overlay').classList.add('active');
+                    renderCart();
+
+                });
+
+                return;
+            }
+
+            // Adiciona o total do carrinho na mensagem do WhatsApp.
+            msg += "\n━━━━━━━━━━━━━━━\n";
+            msg += ` *TOTAL: ${document.getElementById("cart-total").innerText}*\n`;
+            msg += "━━━━━━━━━━━━━━━\n\n";
+            msg += "Aguardando confirmação do pedido. ";
+
+            showCustomAlert({
+                icon: "success",
+                title: "Pedido pronto!",
+                text: "Abrindo WhatsApp...",
+                confirmButtonColor: "#079689"
+            }).then(() => {
+
+                // Cria o link do WhatsApp com o número da loja e a mensagem codificada.
+                const url = `https://wa.me/5511975240578?text=${encodeURIComponent(msg)}`;
+
+                // Abre o WhatsApp em uma nova aba/janela.
+                window.open(url, "_blank");
+
+                // Limpa o carrinho depois que o pedido foi enviado para o WhatsApp.
+                clearCart();
+
+            });
+
+        }
+
+        /* carregar carrinho ao abrir site */
+
+        // Carrega o carrinho salvo quando o site abre.
+        function loadCart() {
+
+            // Percorre cada produto dentro do carrinho.
+            for (let item in cart) {
+
+                const qtyEl = document.getElementById(`qty-${item}`);
+
+                if (qtyEl) {
+
+                    qtyEl.innerText = cart[item];
+                }
+            }
+
+            // Reaplica visualmente os tamanhos que já estavam salvos.
+            for (let produto in tamanhosSelecionados) {
+                syncProductSizeButtons(produto);
+            }
+
+            updateCartCount();
+            renderCart();
+        }
+
+        // Limpa todo o carrinho e todos os tamanhos selecionados.
+        function clearCart() {
+            // Esvazia o objeto do carrinho.
+            cart = {};
+            // Esvazia os tamanhos selecionados.
+            tamanhosSelecionados = {};
+            // Remove o carrinho salvo do navegador.
+            localStorage.removeItem("cart");
+
+            // Remove também os tamanhos salvos do navegador.
+            localStorage.removeItem("tamanhosSelecionados");
+
+            // Zera visualmente todas as quantidades que aparecem nos cards.
+            document.querySelectorAll(".qty-val").forEach(q => {
+                q.innerText = 0;
+            });
+
+            // Remove a seleção visual dos botões de tamanho.
+            document.querySelectorAll(".btn-size").forEach(btn => {
+                btn.classList.remove("selected");
+            });
+
+            // Limpa os campos de nome e endereço depois de finalizar o pedido.
+            const nomeCliente = document.getElementById("customer-name");
+            const enderecoCliente = document.getElementById("customer-address");
+
+            if (nomeCliente) nomeCliente.value = "";
+            if (enderecoCliente) enderecoCliente.value = "";
+
+            updateCartCount();
+            renderCart();
+        }
+        // Quando a página terminar de carregar, executa loadCart para restaurar o carrinho salvo.
+        window.onload = loadCart;
     </script>
 
 </body>
+
 </html>
