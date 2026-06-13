@@ -138,6 +138,12 @@
             font-weight: 700;
         }
 
+        .item-info li {
+            margin: 8px 0;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
         /* Descrição do produto dentro do card */
         .item-info p {
             margin: 8px 0;
@@ -593,6 +599,61 @@
             display: block;
         }
 
+        .kit-conteudo {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+        }
+
+        .kit-conteudo ul {
+            margin: 0;
+            padding-left: 30px;
+        }
+
+        .docinhos {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+        }
+
+        .docinhos-texto {
+            flex: 1;
+        }
+
+        .doce-img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        }
+
+        .salgadinhos {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+        }
+
+        .salgadinhos-texto {
+            flex: 1;
+        }
+
+        .salgado-img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        }
+
+        .kit-img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        }
+
         /* RESPONSIVO MOBILE */
         @media (max-width: 768px) {
 
@@ -698,6 +759,38 @@
                 gap: 6px;
             }
         }
+
+        @media (max-width: 600px) {
+            .kit-conteudo {
+                flex-direction: column;
+            }
+
+            .kit-img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .docinhos {
+                flex-direction: column;
+            }
+
+            .doce-img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        @media (max-width: 600px) {
+            .salgadinhos {
+                flex-direction: column;
+            }
+
+            .salgado-img {
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
 </head>
 
@@ -717,9 +810,9 @@
     <div class="filters">
         <button class="filter-btn active" onclick="filterItems('todos')">Todos</button>
         <button class="filter-btn" onclick="filterItems('comida')">Alimentação Natural</button>
-        <button class="filter-btn" onclick="filterItems('doces')">Doces</button>
-        <button class="filter-btn" onclick="filterItems('salgados')">Salgados</button>
         <button class="filter-btn" onclick="filterItems('petiscos')">Petiscos</button>
+        <button class="filter-btn" onclick="filterItems('salgados')">Salgados</button>
+        <button class="filter-btn" onclick="filterItems('doces')">Doces</button>
         <button class="filter-btn" onclick="filterItems('Kits')">Kits festa</button>
     </div>
 
@@ -950,9 +1043,24 @@
         <div class="item-card" data-cat="Kits">
             <div class="item-info">
                 <h3>Kit Festa 01</h3>
-                <img src="kit1.png" alt="">
+
+                <div class="kit-conteudo">
+                    <ul>
+                        <li>Imagem ilustrativa</li>
+                        <li>Caso queira o bolo com ossinho, será cobrado adicional</li>
+                        <li>Bolo com até 02 cores</li>
+                        <li>Bolo a partir de 3 cores será cobrado adicional</li>
+                        <li>Bolo sabor: carne bovina, carne suína, frango ou banana</li>
+                        <li>Frete cobrado separadamente</li>
+                        <li>Topo de bolo do tema: com nome, idade e uma foto</li>
+                    </ul>
+
+                    <img src="kit1.png" alt="Kit Festa 01" class="kit-img">
+                </div>
+
                 <div class="item-price">R$ 85,00</div>
             </div>
+
             <div class="controls">
                 <span>Quantidade</span>
                 <div class="qty-wrapper">
@@ -962,12 +1070,28 @@
                 </div>
             </div>
         </div>
+
         <div class="item-card" data-cat="Kits">
             <div class="item-info">
                 <h3>Kit Festa 02</h3>
-                <img src="kit2.png" alt="">
+
+                <div class="kit-conteudo">
+                    <ul>
+                        <li>Imagem ilustrativa</li>
+                        <li>Caso queira o bolo com ossinho, será cobrado adicional</li>
+                        <li>Bolo com até 02 cores</li>
+                        <li>Bolo a partir de 3 cores será cobrado adicional</li>
+                        <li>Bolo sabor: carne bovina, carne suína, frango ou banana</li>
+                        <li>Frete cobrado separadamente</li>
+                        <li>Topo de bolo do tema: com nome, idade e uma foto</li>
+                    </ul>
+
+                    <img src="kit2.png" alt="Kit Festa 02" class="kit-img">
+                </div>
+
                 <div class="item-price">R$ 105,00</div>
             </div>
+
             <div class="controls">
                 <span>Quantidade</span>
                 <div class="qty-wrapper">
@@ -977,12 +1101,28 @@
                 </div>
             </div>
         </div>
+
         <div class="item-card" data-cat="Kits">
             <div class="item-info">
                 <h3>Kit Festa 03</h3>
-                <img src="kit3.png" alt="">
+
+                <div class="kit-conteudo">
+                    <ul>
+                        <li>Imagem ilustrativa</li>
+                        <li>Caso queira o bolo com ossinho, será cobrado adicional</li>
+                        <li>Bolo com até 02 cores</li>
+                        <li>Bolo a partir de 3 cores será cobrado adicional</li>
+                        <li>Bolo sabor: carne bovina, carne suína, frango ou banana</li>
+                        <li>Frete cobrado separadamente</li>
+                        <li>Topo de bolo do tema: com nome, idade e uma foto</li>
+                    </ul>
+
+                    <img src="kit3.png" alt="Kit Festa 03" class="kit-img">
+                </div>
+
                 <div class="item-price">R$ 115,00</div>
             </div>
+
             <div class="controls">
                 <span>Quantidade</span>
                 <div class="qty-wrapper">
@@ -992,12 +1132,28 @@
                 </div>
             </div>
         </div>
+
         <div class="item-card" data-cat="Kits">
             <div class="item-info">
                 <h3>Kit Festa 04</h3>
-                <img src="kit4.png" alt="">
+
+                <div class="kit-conteudo">
+                    <ul>
+                        <li>Imagem ilustrativa</li>
+                        <li>Caso queira o bolo com ossinho, será cobrado adicional</li>
+                        <li>Bolo com até 02 cores</li>
+                        <li>Bolo a partir de 3 cores será cobrado adicional</li>
+                        <li>Bolo sabor: carne bovina, carne suína, frango ou banana</li>
+                        <li>Frete cobrado separadamente</li>
+                        <li>Topo de bolo do tema: com nome, idade e uma foto</li>
+                    </ul>
+
+                    <img src="kit4.png" alt="Kit Festa 04" class="kit-img">
+                </div>
+
                 <div class="item-price">R$ 195,00</div>
             </div>
+
             <div class="controls">
                 <span>Quantidade</span>
                 <div class="qty-wrapper">
@@ -1007,12 +1163,28 @@
                 </div>
             </div>
         </div>
+
         <div class="item-card" data-cat="Kits">
             <div class="item-info">
                 <h3>Kit Festa 05</h3>
-                <img src="kit5.png" alt="">
+
+                <div class="kit-conteudo">
+                    <ul>
+                        <li>Imagem ilustrativa</li>
+                        <li>Caso queira o bolo com ossinho, será cobrado adicional</li>
+                        <li>Bolo com até 02 cores</li>
+                        <li>Bolo a partir de 3 cores será cobrado adicional</li>
+                        <li>Bolo sabor: carne bovina, carne suína, frango ou banana</li>
+                        <li>Frete cobrado separadamente</li>
+                        <li>Topo de bolo do tema: com nome, idade e uma foto</li>
+                    </ul>
+
+                    <img src="kit5.png" alt="Kit Festa 05" class="kit-img">
+                </div>
+
                 <div class="item-price">R$ 315,00</div>
             </div>
+
             <div class="controls">
                 <span>Quantidade</span>
                 <div class="qty-wrapper">
@@ -1025,12 +1197,21 @@
         <div class="item-card" data-cat="doces">
             <div class="item-info">
                 <h3>Brigaudeiro</h3>
-                <h4>Pedido minimo 6 unidades</h4>
-                <p>14g • Batata doce, Banana, Alfarroba, Melaço, Pasta de amendoim, Farinha de amendoim e Farinha de
-                    coco.</p>
-                <p>Decoração: Linhaça Marrom ou Quinoa </p>
+
+                <div class="docinhos">
+                    <div class="docinhos-texto">
+                        <h4>Pedido mínimo 6 unidades</h4>
+                        <p>14g • Batata doce, Banana, Alfarroba, Melaço, Pasta de amendoim, Farinha de amendoim e
+                            Farinha de coco.</p>
+                        <p>Decoração: Linhaça Marrom ou Quinoa</p>
+                    </div>
+
+                    <img src="brigadeiro.png" alt="Brigaudeiro" class="doce-img">
+                </div>
+
                 <div class="item-price">R$ 2,50</div>
             </div>
+
             <div class="controls">
                 <span>Quantidade</span>
                 <div class="qty-wrapper">
@@ -1043,11 +1224,16 @@
         <div class="item-card" data-cat="doces">
             <div class="item-info">
                 <h3>Beujinho</h3>
-                <h4>Pedido minimo 6 unidades</h4>
-                <p>14g • Batata doce, Cará, Mel, Pasta de amendoim, Farinha de amendoim e Farinha de coco.</p>
-                <p>Decoração: Farinha de coco </p>
-                <div class="item-price">R$ 2,50</div>
+                <div class="docinhos">
+                    <div class="docinhos-texto">
+                        <h4>Pedido minimo 6 unidades</h4>
+                        <p>14g • Batata doce, Cará, Mel, Pasta de amendoim, Farinha de amendoim e Farinha de coco.</p>
+                        <p>Decoração: Farinha de coco </p>
+                    </div>
+                    <img src="beijinho.png" alt="Beujinho" class="doce-img">
+                </div>
             </div>
+            <div class="item-price">R$ 2,50</div>
             <div class="controls">
                 <span>Quantidade</span>
                 <div class="qty-wrapper">
@@ -1100,8 +1286,16 @@
         <div class="item-card" data-cat="salgados">
             <div class="item-info">
                 <h3>Caoxinha</h3>
-                <h4>Pedido mínimo 6 unidades</h4>
-                <p>20g • Mandioca, Batata doce, Carne suína, Alecrim, Farinha de arroz em flocos, Sal, Banha, Salsa desidratada e Farinha de linhaça.</p>
+                <div class="salgadinho">
+                    <div class="salgadinhos-texto">
+                        <h4>Pedido mínimo 6 unidades</h4>
+                        <p>
+                            20g • Mandioca, Batata doce, Carne suína, Alecrim, Farinha de arroz em flocos, Sal, Banha, Salsa
+                            desidratada e Farinha de linhaça.
+                        </p>
+                    </div>
+                    <img src="caoxinha.jpeg" alt="Caoxinha" class="salgado-img">
+                </div>
                 <div class="item-price">R$ 2,80</div>
             </div>
             <div class="controls">
@@ -1110,6 +1304,53 @@
                     <button class="btn-qty" onclick="update('Caoxinha', -1)">-</button>
                     <span class="qty-val" id="qty-Caoxinha">0</span>
                     <button class="btn-qty" onclick="update('Caoxinha', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="item-card" data-cat="salgados">
+            <div class="item-info">
+                <h3>Croquete</h3>
+                <div class="salgadinho">
+                    <div class="salgadinhos-texto">
+                        <h4>Pedido mínimo 6 unidades</h4>
+                        <p>
+                            20g • Mandioca, Batata doce, Carne suína, Alecrim, Farinha de arroz em flocos, Sal, Banha, Salsa
+                            desidratada e Farinha de linhaça.
+                        </p>
+                    </div>
+                    <img src="croquete.jpeg" alt="Croquete" class="salgado-img">
+                </div>
+                <div class="item-price">R$ 2,80</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Croquete', -1)">-</button>
+                    <span class="qty-val" id="qty-Croquete">0</span>
+                    <button class="btn-qty" onclick="update('Croquete', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="item-card" data-cat="salgados">
+            <div class="item-info">
+                <h3>Bolinha de carne</h3>
+                <div class="salgadinho">
+                    <div class="salgadinhos-texto">
+                        <h4>Pedido mínimo 6 unidades</h4>
+                        <p>
+                            20g • Mandioca, Batata doce, Carne Bovina, Farinha de arroz em flocos, Sal, Banha, Salsa desidratada.
+                        </p>
+                    </div>
+                    <img src="bolinhadecarne.jpeg" alt="Bolinha de carne" class="salgado-img">
+                </div>
+                <div class="item-price">R$ 2,80</div>
+            </div>
+            <div class="controls">
+                <span>Quantidade</span>
+                <div class="qty-wrapper">
+                    <button class="btn-qty" onclick="update('Bolinha de carne', -1)">-</button>
+                    <span class="qty-val" id="qty-Bolinha de carne">0</span>
+                    <button class="btn-qty" onclick="update('Bolinha de carne', 1)">+</button>
                 </div>
             </div>
         </div>
@@ -1197,7 +1438,9 @@
             "Beujinho": 2.50,
             "Cupcake Mini": 4.00,
             "Cupcake": 7.00,
-            "Caoxinha": 2.80
+            "Caoxinha": 2.80,
+            "Croquete": 2.80,
+            "Bolinha de carne": 2.80
         };
 
         // Salva o carrinho atual no localStorage do navegador.
@@ -1524,15 +1767,15 @@
             if (!card) return;
 
             card.querySelectorAll(".btn-size").forEach(btn => {
-            btn.classList.remove("selected");
+                btn.classList.remove("selected");
 
-            const onclickValue = btn.getAttribute("onclick") || "";
+                const onclickValue = btn.getAttribute("onclick") || "";
 
-            if (tamanhosSelecionados[produto] && onclickValue.includes(tamanhosSelecionados[produto])) {
-                btn.classList.add("selected");
-            }
-        });
-}
+                if (tamanhosSelecionados[produto] && onclickValue.includes(tamanhosSelecionados[produto])) {
+                    btn.classList.add("selected");
+                }
+            });
+        }
 
         // Salva o tamanho escolhido para um petisco pelo card do produto.
         // produto = nome do produto.
