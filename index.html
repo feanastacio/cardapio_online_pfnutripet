@@ -1246,11 +1246,16 @@
         <div class="item-card" data-cat="doces" data-product="Cupcake Mini">
             <div class="item-info">
                 <h3>Cupcake Mini</h3>
-                <h4>Pedido minimo 6 unidades • 25g cada</h4>
-                <div class="sabores">
-                    <p>Escolha o sabor:</p>
-                    <button class="btn-size" onclick="selectSize('Cupcake Mini', 'Banana', this)">Banana</button>
-                    <button class="btn-size" onclick="selectSize('Cupcake Mini', 'Amendoim', this)">Amendoim</button>
+                <div class="docinhos">
+                    <div class="docinhos-texto">
+                        <h4>Pedido minimo 6 unidades • 25g cada</h4>
+                        <div class="sabores">
+                            <p>Escolha o sabor:</p>
+                            <button class="btn-size" onclick="selectSize('Cupcake Mini', 'Banana', this)">Banana</button>
+                            <button class="btn-size" onclick="selectSize('Cupcake Mini', 'Amendoim', this)">Amendoim</button>
+                        </div>
+                    </div>
+                    <img src="cupcakemini.jpeg" alt="cupcakemini" class="doce-img">
                 </div>
                 <div class="item-price">R$ 4,00</div>
             </div>
@@ -1266,11 +1271,16 @@
         <div class="item-card" data-cat="doces" data-product="Cupcake">
             <div class="item-info">
                 <h3>Cupcake</h3>
-                <h4>Pedido minimo 6 unidades • 45g cada</h4>
-                <div class="sabores">
-                    <p>Escolha o sabor:</p>
-                    <button class="btn-size" onclick="selectSize('Cupcake', 'Banana', this)">Banana</button>
-                    <button class="btn-size" onclick="selectSize('Cupcake', 'Amendoim', this)">Amendoim</button>
+                <div class="docinhos">
+                    <div class="docinhos-texto">
+                        <h4>Pedido minimo 6 unidades • 45g cada</h4>
+                        <div class="sabores">
+                            <p>Escolha o sabor:</p>
+                            <button class="btn-size" onclick="selectSize('Cupcake', 'Banana', this)">Banana</button>
+                            <button class="btn-size" onclick="selectSize('Cupcake', 'Amendoim', this)">Amendoim</button>
+                        </div>
+                    </div>
+                    <img src="cupcake.jpeg" alt="cupcake" class="doce-img">
                 </div>
                 <div class="item-price">R$ 7,00</div>
             </div>
@@ -1912,14 +1922,15 @@
                 }
 
                 // Adiciona na mensagem a quantidade, o nome do produto e o tamanho, se existir.
-                msg += ` *${cart[item]}x* ${item}`;
+                // Adiciona na mensagem a quantidade e o nome do produto.
+                msg += ` *${cart[item]}x* ${item}\n`;
 
                 if (tamanhosSelecionados[item]) {
 
                     if (card && card.querySelector(".sabores")) {
-                        msg += `\n   ↳ Sabor: ${tamanhosSelecionados[item]}\n`;
+                        msg += `   ↳ Sabor: ${tamanhosSelecionados[item]}\n`;
                     } else {
-                        msg += `\n   ↳ Tamanho: ${tamanhosSelecionados[item]}\n`;
+                        msg += `   ↳ Tamanho: ${tamanhosSelecionados[item]}\n`;
                     }
                 }
             }
